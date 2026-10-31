@@ -1,0 +1,1182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | TravelMate</title>
+
+    <link rel="stylesheet" href="{% static 'notifications.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Background -->
+<div class="bg-grid"></div>
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">✈</div>
+
+        <div>
+            <h2>Travel<span>Mate</span></h2>
+            <small>Smart Travel Planner</small>
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <a href="/" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{% url 'destinations' %}" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Destinations</span>
+        </a>
+
+        <a href="{% url 'my_trips' %}" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>My Trips</span>
+        </a>
+
+        <a href="{% url 'itinerary' %}" class="nav-item">
+            <span class="nav-icon">☷</span>
+            <span>Itinerary</span>
+        </a>
+
+        <a href="{% url 'favorites' %}" class="nav-item">
+            <span class="nav-icon">♡</span>
+            <span>Favorites</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">₹</span>
+            <span>Expenses</span>
+        </a>
+
+        <a href="{% url 'help_support' %}" class="nav-item">
+            <span class="nav-icon">?</span>
+            <span>Help & Support</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="mini-card">
+
+            <div class="mini-icon">✦</div>
+
+            <div>
+                <strong>Travel Pro</strong>
+                <span>Explore more</span>
+            </div>
+
+        </div>
+
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="eyebrow">TRAVELMATE UPDATES</p>
+
+            <h1>Notifications</h1>
+
+            <p class="top-description">
+                Stay updated with your trips, reminders and travel activity.
+            </p>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <button class="top-icon active">
+                ♢
+                <span class="notification-dot"></span>
+            </button>
+
+
+            <div class="top-profile">
+
+                <div class="top-avatar">
+                    NR
+                </div>
+
+                <div>
+                    <strong>Nikhil Rathod</strong>
+                    <span>Traveler</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= SUMMARY CARDS ================= -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card unread-summary">
+
+            <div class="summary-icon purple">
+                ♢
+            </div>
+
+            <div>
+                <span>Unread</span>
+                <strong id="unreadCount">5</strong>
+            </div>
+
+            <div class="summary-glow"></div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon cyan">
+                🧳
+            </div>
+
+            <div>
+                <span>Trip Updates</span>
+                <strong>3</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon orange">
+                ⏰
+            </div>
+
+            <div>
+                <span>Reminders</span>
+                <strong>2</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon green">
+                ✓
+            </div>
+
+            <div>
+                <span>Completed</span>
+                <strong>8</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= TOOLBAR ================= -->
+
+    <section class="notification-toolbar">
+
+        <div class="filters">
+
+            <button class="filter active" data-filter="all">
+                All
+                <span>13</span>
+            </button>
+
+            <button class="filter" data-filter="unread">
+                Unread
+                <span>5</span>
+            </button>
+
+            <button class="filter" data-filter="trip">
+                Trips
+            </button>
+
+            <button class="filter" data-filter="reminder">
+                Reminders
+            </button>
+
+            <button class="filter" data-filter="system">
+                System
+            </button>
+
+        </div>
+
+
+        <div class="toolbar-actions">
+
+            <button onclick="markAllRead()" class="toolbar-btn">
+                ✓ Mark all read
+            </button>
+
+            <button onclick="clearNotifications()" class="toolbar-btn danger">
+                × Clear all
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= NOTIFICATIONS ================= -->
+
+    <section class="notifications-container">
+
+
+        <!-- TODAY -->
+
+        <div class="day-title">
+
+            <span>Today</span>
+
+            <div></div>
+
+        </div>
+
+
+        <!-- Notification 1 -->
+
+        <article class="notification unread"
+                 data-category="trip"
+                 data-id="1">
+
+            <div class="notification-icon purple">
+                🧳
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Your Goa trip is coming up!</h3>
+
+                    <span class="new-badge">NEW</span>
+
+                </div>
+
+                <p>
+                    Your <strong>Goa Beach Escape</strong> starts in
+                    14 days. Make sure your itinerary and bookings are ready.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 2 hours ago</span>
+                    <span class="category-tag trip-tag">Trip</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Notification 2 -->
+
+        <article class="notification unread"
+                 data-category="reminder"
+                 data-id="2">
+
+            <div class="notification-icon orange">
+                ⏰
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Itinerary reminder</h3>
+
+                    <span class="new-badge">NEW</span>
+
+                </div>
+
+                <p>
+                    You have unfinished itinerary items for your
+                    <strong>Manali Adventure</strong>.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 4 hours ago</span>
+                    <span class="category-tag reminder-tag">Reminder</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Notification 3 -->
+
+        <article class="notification unread"
+                 data-category="system"
+                 data-id="3">
+
+            <div class="notification-icon cyan">
+                ✦
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Welcome to TravelMate Pro</h3>
+
+                    <span class="new-badge">NEW</span>
+
+                </div>
+
+                <p>
+                    Your TravelMate dashboard is ready. Explore destinations,
+                    organize trips and manage your travel budget.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 6 hours ago</span>
+                    <span class="category-tag system-tag">System</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- YESTERDAY -->
+
+        <div class="day-title">
+
+            <span>Yesterday</span>
+
+            <div></div>
+
+        </div>
+
+
+        <!-- Notification 4 -->
+
+        <article class="notification unread"
+                 data-category="trip"
+                 data-id="4">
+
+            <div class="notification-icon green">
+                ✓
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Trip successfully created</h3>
+
+                    <span class="new-badge">NEW</span>
+
+                </div>
+
+                <p>
+                    Your <strong>Rajasthan Heritage Tour</strong>
+                    has been successfully added to My Trips.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 Yesterday</span>
+                    <span class="category-tag trip-tag">Trip</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Notification 5 -->
+
+        <article class="notification unread"
+                 data-category="reminder"
+                 data-id="5">
+
+            <div class="notification-icon pink">
+                ♡
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Don't forget your favorites</h3>
+
+                    <span class="new-badge">NEW</span>
+
+                </div>
+
+                <p>
+                    You have saved 14 destinations. Explore them and
+                    start planning your next adventure.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 Yesterday</span>
+                    <span class="category-tag reminder-tag">Reminder</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- OLDER -->
+
+        <div class="day-title">
+
+            <span>Earlier</span>
+
+            <div></div>
+
+        </div>
+
+
+        <!-- Notification 6 -->
+
+        <article class="notification read"
+                 data-category="trip">
+
+            <div class="notification-icon blue">
+                📍
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Destination added</h3>
+
+                </div>
+
+                <p>
+                    Manali has been added to your favorite destinations.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 3 days ago</span>
+                    <span class="category-tag trip-tag">Trip</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Notification 7 -->
+
+        <article class="notification read"
+                 data-category="system">
+
+            <div class="notification-icon cyan">
+                🔐
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Profile security updated</h3>
+
+                </div>
+
+                <p>
+                    Your profile security settings were successfully updated.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 5 days ago</span>
+                    <span class="category-tag system-tag">System</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Notification 8 -->
+
+        <article class="notification read"
+                 data-category="trip">
+
+            <div class="notification-icon orange">
+                💰
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title-row">
+
+                    <h3>Budget update available</h3>
+
+                </div>
+
+                <p>
+                    Your Manali trip has reached 92% of the planned budget.
+                </p>
+
+                <div class="notification-meta">
+                    <span>🕒 1 week ago</span>
+                    <span class="category-tag trip-tag">Trip</span>
+                </div>
+
+            </div>
+
+
+            <button class="notification-menu"
+                    onclick="toggleMenu(this)">
+                ⋮
+            </button>
+
+            <div class="notification-dropdown">
+
+                <button onclick="markRead(this)">
+                    ✓ Mark as read
+                </button>
+
+                <button onclick="removeNotification(this)">
+                    × Remove
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Empty state -->
+
+        <div class="empty-state" id="emptyState">
+
+            <div class="empty-icon">
+                ♢
+            </div>
+
+            <h3>No notifications</h3>
+
+            <p>
+                You're all caught up. New travel updates will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= NOTIFICATION SETTINGS ================= -->
+
+    <section class="notification-settings">
+
+        <div class="settings-heading">
+
+            <div class="settings-symbol">
+                ⚙
+            </div>
+
+            <div>
+                <p class="section-label">PREFERENCES</p>
+                <h2>Notification Settings</h2>
+
+                <p>
+                    Choose which updates you want to receive.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="settings-list">
+
+
+            <div class="setting-row">
+
+                <div class="setting-icon purple">
+                    🧳
+                </div>
+
+                <div class="setting-info">
+                    <strong>Trip Updates</strong>
+                    <span>Get updates about your upcoming and active trips.</span>
+                </div>
+
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-icon orange">
+                    ⏰
+                </div>
+
+                <div class="setting-info">
+                    <strong>Travel Reminders</strong>
+                    <span>Receive reminders about itineraries and planned activities.</span>
+                </div>
+
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-icon cyan">
+                    ✦
+                </div>
+
+                <div class="setting-info">
+                    <strong>TravelMate Updates</strong>
+                    <span>Receive new feature and platform announcements.</span>
+                </div>
+
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-icon green">
+                    💰
+                </div>
+
+                <div class="setting-info">
+                    <strong>Budget Alerts</strong>
+                    <span>Get notified when your trip spending approaches the budget.</span>
+                </div>
+
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <div class="toast-icon">
+        ✓
+    </div>
+
+    <div>
+        <strong>Success</strong>
+        <p id="toastMessage">Done</p>
+    </div>
+
+</div>
+
+
+
+<script>
+
+const toast = document.getElementById("toast");
+const toastMessage = document.getElementById("toastMessage");
+const unreadCount = document.getElementById("unreadCount");
+const emptyState = document.getElementById("emptyState");
+
+
+
+/* ================= TOAST ================= */
+
+function showToast(message) {
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+
+
+/* ================= FILTERS ================= */
+
+const filters = document.querySelectorAll(".filter");
+
+filters.forEach(filter => {
+
+    filter.addEventListener("click", () => {
+
+        filters.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        filter.classList.add("active");
+
+        const selected = filter.dataset.filter;
+
+        filterNotifications(selected);
+
+    });
+
+});
+
+
+function filterNotifications(category) {
+
+    const notifications =
+        document.querySelectorAll(".notification");
+
+    let visible = 0;
+
+    notifications.forEach(notification => {
+
+        const notificationCategory =
+            notification.dataset.category;
+
+        let show = false;
+
+        if (category === "all") {
+            show = true;
+        }
+
+        else if (category === "unread") {
+            show = notification.classList.contains("unread");
+        }
+
+        else {
+            show = notificationCategory === category;
+        }
+
+
+        if (show) {
+
+            notification.style.display = "flex";
+
+            visible++;
+
+        } else {
+
+            notification.style.display = "none";
+
+        }
+
+    });
+
+
+    emptyState.style.display =
+        visible === 0 ? "flex" : "none";
+}
+
+
+
+/* ================= UPDATE UNREAD COUNT ================= */
+
+function updateUnreadCount() {
+
+    const unread =
+        document.querySelectorAll(
+            ".notification.unread"
+        ).length;
+
+    unreadCount.textContent = unread;
+
+}
+
+
+
+/* ================= MARK READ ================= */
+
+function markRead(button) {
+
+    const notification =
+        button.closest(".notification");
+
+    notification.classList.remove("unread");
+    notification.classList.add("read");
+
+    const badge =
+        notification.querySelector(".new-badge");
+
+    if (badge) {
+        badge.remove();
+    }
+
+    notification
+        .querySelector(".notification-dropdown")
+        .classList.remove("open");
+
+    updateUnreadCount();
+
+    showToast("Notification marked as read");
+
+}
+
+
+
+/* ================= MARK ALL READ ================= */
+
+function markAllRead() {
+
+    const notifications =
+        document.querySelectorAll(".notification.unread");
+
+    notifications.forEach(notification => {
+
+        notification.classList.remove("unread");
+        notification.classList.add("read");
+
+        const badge =
+            notification.querySelector(".new-badge");
+
+        if (badge) {
+            badge.remove();
+        }
+
+    });
+
+    updateUnreadCount();
+
+    showToast("All notifications marked as read");
+
+}
+
+
+
+/* ================= MENU ================= */
+
+function toggleMenu(button) {
+
+    const dropdown =
+        button.nextElementSibling;
+
+    document
+        .querySelectorAll(".notification-dropdown")
+        .forEach(menu => {
+
+            if (menu !== dropdown) {
+                menu.classList.remove("open");
+            }
+
+        });
+
+    dropdown.classList.toggle("open");
+
+}
+
+
+
+/* ================= REMOVE ================= */
+
+function removeNotification(button) {
+
+    const notification =
+        button.closest(".notification");
+
+    notification.classList.add("removing");
+
+    setTimeout(() => {
+
+        notification.remove();
+
+        updateUnreadCount();
+
+        showToast("Notification removed");
+
+        checkEmpty();
+
+    }, 300);
+
+}
+
+
+
+/* ================= CLEAR ALL ================= */
+
+function clearNotifications() {
+
+    const notifications =
+        document.querySelectorAll(".notification");
+
+    if (!notifications.length) {
+        showToast("No notifications to clear");
+        return;
+    }
+
+    notifications.forEach(notification => {
+
+        notification.classList.add("removing");
+
+    });
+
+
+    setTimeout(() => {
+
+        notifications.forEach(notification => {
+            notification.remove();
+        });
+
+        updateUnreadCount();
+
+        checkEmpty();
+
+        showToast("All notifications cleared");
+
+    }, 350);
+
+}
+
+
+
+/* ================= EMPTY ================= */
+
+function checkEmpty() {
+
+    const notifications =
+        document.querySelectorAll(".notification");
+
+    emptyState.style.display =
+        notifications.length === 0 ? "flex" : "none";
+
+}
+
+
+
+/* ================= CLOSE MENUS ================= */
+
+document.addEventListener("click", event => {
+
+    if (
+        !event.target.closest(".notification-menu") &&
+        !event.target.closest(".notification-dropdown")
+    ) {
+
+        document
+            .querySelectorAll(".notification-dropdown")
+            .forEach(menu => {
+                menu.classList.remove("open");
+            });
+
+    }
+
+});
+
+
+
+/* ================= SETTINGS ================= */
+
+document.querySelectorAll(".switch input")
+.forEach(input => {
+
+    input.addEventListener("change", () => {
+
+        if (input.checked) {
+            showToast("Notification enabled");
+        } else {
+            showToast("Notification disabled");
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

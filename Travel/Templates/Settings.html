@@ -1,0 +1,1121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Settings</title>
+
+    <link rel="stylesheet" href="{% static 'settings.css' %}">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">✈</span>
+
+            <span>TravelMate</span>
+
+        </div>
+
+
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="{% url 'home' %}" class="nav-item">
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+
+                <span class="nav-icon">🌍</span>
+
+                <span>Destinations</span>
+
+            </a>
+
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+
+                <span class="nav-icon">🧳</span>
+
+                <span>My Trips</span>
+
+            </a>
+
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+
+                <span class="nav-icon">📋</span>
+
+                <span>Itinerary</span>
+
+            </a>
+
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+
+                <span class="nav-icon">♥</span>
+
+                <span>Favorites</span>
+
+            </a>
+
+
+            <a href="{% url 'reports' %}" class="nav-item">
+
+                <span class="nav-icon">📊</span>
+
+                <span>Reports</span>
+
+            </a>
+
+
+            <a href="{% url 'budget' %}" class="nav-item">
+
+                <span class="nav-icon">💰</span>
+
+                <span>Budget Planner</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="menu-title second-title">
+            ACCOUNT
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="{% url 'settings' %}" class="nav-item active">
+
+                <span class="nav-icon">⚙</span>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a href="{% url 'logout' %}" class="nav-item">
+
+                <span class="nav-icon">↪</span>
+
+                <span>Logout</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="travel-tip">
+
+                <div class="tip-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <strong>TravelMate</strong>
+
+                    <p>
+                        Your journey, your way.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="page-heading">
+
+                <div class="breadcrumb">
+
+                    TravelMate
+
+                    <span>/</span>
+
+                    Settings
+
+                </div>
+
+
+                <h1>
+                    Settings
+                </h1>
+
+
+                <p>
+                    Manage your account, preferences and TravelMate experience.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <button class="icon-button">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        N
+                    </div>
+
+
+                    <div class="user-info">
+
+                        <strong>
+                            Nikhil
+                        </strong>
+
+                        <span>
+                            Traveler
+                        </span>
+
+                    </div>
+
+
+                    <span class="arrow">
+                        ⌄
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             SETTINGS LAYOUT
+        ====================================================== -->
+
+        <div class="settings-layout">
+
+
+            <!-- SETTINGS MENU -->
+
+            <aside class="settings-menu">
+
+
+                <div class="settings-menu-title">
+                    SETTINGS
+                </div>
+
+
+                <a href="#profile" class="settings-link active">
+
+                    <span>👤</span>
+
+                    <div>
+                        <strong>Profile</strong>
+                        <small>Personal information</small>
+                    </div>
+
+                </a>
+
+
+                <a href="#preferences" class="settings-link">
+
+                    <span>🌍</span>
+
+                    <div>
+                        <strong>Preferences</strong>
+                        <small>Travel preferences</small>
+                    </div>
+
+                </a>
+
+
+                <a href="#notifications" class="settings-link">
+
+                    <span>🔔</span>
+
+                    <div>
+                        <strong>Notifications</strong>
+                        <small>Alerts & updates</small>
+                    </div>
+
+                </a>
+
+
+                <a href="#appearance" class="settings-link">
+
+                    <span>🎨</span>
+
+                    <div>
+                        <strong>Appearance</strong>
+                        <small>Theme & interface</small>
+                    </div>
+
+                </a>
+
+
+                <a href="#security" class="settings-link">
+
+                    <span>🔐</span>
+
+                    <div>
+                        <strong>Security</strong>
+                        <small>Password & privacy</small>
+                    </div>
+
+                </a>
+
+
+            </aside>
+
+
+
+            <!-- SETTINGS CONTENT -->
+
+            <section class="settings-content">
+
+
+                <!-- =================================================
+                     PROFILE
+                ================================================== -->
+
+                <div class="settings-section" id="profile">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Profile Information
+                            </h2>
+
+                            <p>
+                                Update your personal information and profile details.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-card">
+
+
+                        <div class="profile-photo-section">
+
+                            <div class="large-avatar">
+                                N
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Nikhil Rathod
+                                </h3>
+
+                                <p>
+                                    Travel Enthusiast
+                                </p>
+
+
+                                <button class="change-photo">
+                                    Change Photo
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    First Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Nikhil"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Last Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Rathod"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    value="nikhil@example.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="+91 98765 43210"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button class="cancel-button">
+                                Cancel
+                            </button>
+
+                            <button class="save-button">
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PREFERENCES
+                ================================================== -->
+
+                <div class="settings-section" id="preferences">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Travel Preferences
+                            </h2>
+
+                            <p>
+                                Customize your travel planning experience.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="preference-card">
+
+
+                        <div class="preference-row">
+
+                            <div class="preference-icon">
+                                💱
+                            </div>
+
+                            <div class="preference-info">
+
+                                <strong>
+                                    Currency
+                                </strong>
+
+                                <span>
+                                    Currency used for your budgets and expenses.
+                                </span>
+
+                            </div>
+
+
+                            <select>
+
+                                <option selected>
+                                    Indian Rupee (₹)
+                                </option>
+
+                                <option>
+                                    US Dollar ($)
+                                </option>
+
+                                <option>
+                                    Euro (€)
+                                </option>
+
+                                <option>
+                                    British Pound (£)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="preference-row">
+
+                            <div class="preference-icon">
+                                🗣️
+                            </div>
+
+                            <div class="preference-info">
+
+                                <strong>
+                                    Language
+                                </strong>
+
+                                <span>
+                                    Select your preferred language.
+                                </span>
+
+                            </div>
+
+
+                            <select>
+
+                                <option selected>
+                                    English
+                                </option>
+
+                                <option>
+                                    Hindi
+                                </option>
+
+                                <option>
+                                    Gujarati
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="preference-row">
+
+                            <div class="preference-icon">
+                                📅
+                            </div>
+
+                            <div class="preference-info">
+
+                                <strong>
+                                    Date Format
+                                </strong>
+
+                                <span>
+                                    Choose how dates are displayed.
+                                </span>
+
+                            </div>
+
+
+                            <select>
+
+                                <option selected>
+                                    DD MMM YYYY
+                                </option>
+
+                                <option>
+                                    MM/DD/YYYY
+                                </option>
+
+                                <option>
+                                    YYYY-MM-DD
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="preference-row">
+
+                            <div class="preference-icon">
+                                🗺️
+                            </div>
+
+                            <div class="preference-info">
+
+                                <strong>
+                                    Distance Unit
+                                </strong>
+
+                                <span>
+                                    Choose how distances are displayed.
+                                </span>
+
+                            </div>
+
+
+                            <select>
+
+                                <option selected>
+                                    Kilometers (km)
+                                </option>
+
+                                <option>
+                                    Miles (mi)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     NOTIFICATIONS
+                ================================================== -->
+
+                <div class="settings-section" id="notifications">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Notifications
+                            </h2>
+
+                            <p>
+                                Control the notifications you receive.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notification-card">
+
+
+                        <div class="notification-row">
+
+                            <div>
+
+                                <strong>
+                                    Trip Reminders
+                                </strong>
+
+                                <span>
+                                    Get reminders before your trips begin.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="notification-row">
+
+                            <div>
+
+                                <strong>
+                                    Budget Alerts
+                                </strong>
+
+                                <span>
+                                    Receive alerts when your budget is nearly reached.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="notification-row">
+
+                            <div>
+
+                                <strong>
+                                    Expense Updates
+                                </strong>
+
+                                <span>
+                                    Get notifications about expense activity.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="notification-row">
+
+                            <div>
+
+                                <strong>
+                                    Travel Recommendations
+                                </strong>
+
+                                <span>
+                                    Receive destination and travel suggestions.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="notification-row">
+
+                            <div>
+
+                                <strong>
+                                    Promotional Emails
+                                </strong>
+
+                                <span>
+                                    Receive offers and promotional content.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     APPEARANCE
+                ================================================== -->
+
+                <div class="settings-section" id="appearance">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Appearance
+                            </h2>
+
+                            <p>
+                                Customize the look and feel of TravelMate.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="appearance-card">
+
+
+                        <div class="appearance-title">
+
+                            <strong>
+                                Theme
+                            </strong>
+
+                            <span>
+                                Choose your preferred interface theme.
+                            </span>
+
+                        </div>
+
+
+                        <div class="theme-options">
+
+
+                            <div class="theme-option selected">
+
+                                <div class="theme-preview dark-preview">
+
+                                    <div class="preview-sidebar"></div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="theme-label">
+
+                                    <span>
+                                        🌙
+                                    </span>
+
+                                    Dark
+
+                                    <b>
+                                        ✓
+                                    </b>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="theme-option">
+
+                                <div class="theme-preview light-preview">
+
+                                    <div class="preview-sidebar"></div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="theme-label">
+
+                                    <span>
+                                        ☀️
+                                    </span>
+
+                                    Light
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="theme-option">
+
+                                <div class="theme-preview auto-preview">
+
+                                    <div class="preview-sidebar"></div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="theme-label">
+
+                                    <span>
+                                        🌓
+                                    </span>
+
+                                    System
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SECURITY
+                ================================================== -->
+
+                <div class="settings-section" id="security">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Security & Privacy
+                            </h2>
+
+                            <p>
+                                Manage your account security and privacy.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-card">
+
+
+                        <div class="security-row">
+
+                            <div class="security-icon">
+                                🔑
+                            </div>
+
+
+                            <div class="security-info">
+
+                                <strong>
+                                    Password
+                                </strong>
+
+                                <span>
+                                    Last changed 30 days ago
+                                </span>
+
+                            </div>
+
+
+                            <button class="security-button">
+                                Change Password
+                            </button>
+
+                        </div>
+
+
+                        <div class="security-row">
+
+                            <div class="security-icon">
+                                🛡️
+                            </div>
+
+
+                            <div class="security-info">
+
+                                <strong>
+                                    Two-Factor Authentication
+                                </strong>
+
+                                <span>
+                                    Add an extra layer of account protection.
+                                </span>
+
+                            </div>
+
+
+                            <button class="security-button">
+                                Enable
+                            </button>
+
+                        </div>
+
+
+                        <div class="security-row">
+
+                            <div class="security-icon">
+                                🔒
+                            </div>
+
+
+                            <div class="security-info">
+
+                                <strong>
+                                    Login Sessions
+                                </strong>
+
+                                <span>
+                                    Manage devices currently signed in.
+                                </span>
+
+                            </div>
+
+
+                            <button class="security-button">
+                                Manage
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     DANGER ZONE
+                ================================================== -->
+
+                <div class="danger-zone">
+
+
+                    <div>
+
+                        <h3>
+                            Danger Zone
+                        </h3>
+
+                        <p>
+                            These actions can permanently affect your account.
+                        </p>
+
+                    </div>
+
+
+                    <button>
+                        Delete Account
+                    </button>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

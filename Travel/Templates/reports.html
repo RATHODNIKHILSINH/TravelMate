@@ -1,0 +1,835 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Reports</title>
+
+    <link rel="stylesheet" href="{% static 'reports.css' %}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">✈</span>
+            <span>TravelMate</span>
+        </div>
+
+        <div class="menu-title">MAIN MENU</div>
+
+        <nav class="navigation">
+
+            <a href="{% url 'home' %}" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+                <span class="nav-icon">🌍</span>
+                <span>Destinations</span>
+            </a>
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+                <span class="nav-icon">🧳</span>
+                <span>My Trips</span>
+            </a>
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span>Itinerary</span>
+            </a>
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+                <span class="nav-icon">♥</span>
+                <span>Favorites</span>
+            </a>
+
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <div class="menu-title second-title">ACCOUNT</div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="travel-tip">
+
+                <div class="tip-icon">💡</div>
+
+                <div>
+                    <strong>Travel Tip</strong>
+                    <p>Plan smart. Travel better.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <div class="breadcrumb">
+                    TravelMate <span>/</span> Reports
+                </div>
+
+                <h1>Travel Reports</h1>
+
+                <p>
+                    Get a complete overview of your travel activities,
+                    spending and trips.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="icon-button">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        N
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Nikhil</strong>
+                        <span>Traveler</span>
+                    </div>
+
+                    <span class="arrow">⌄</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= REPORT HEADER ================= -->
+
+        <section class="report-banner">
+
+            <div class="banner-content">
+
+                <div class="banner-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h2>Your Travel Overview</h2>
+
+                    <p>
+                        Analyze your trips, budget and travel expenses
+                        from one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="period-selector">
+
+                <button class="period active">
+                    This Year
+                </button>
+
+                <button class="period">
+                    6 Months
+                </button>
+
+                <button class="period">
+                    30 Days
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon blue">
+                        🧳
+                    </div>
+
+                    <span class="stat-change positive">
+                        ↑ 18%
+                    </span>
+
+                </div>
+
+                <p>Total Trips</p>
+
+                <h2>12</h2>
+
+                <span class="stat-description">
+                    Trips planned this year
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon purple">
+                        🌍
+                    </div>
+
+                    <span class="stat-change positive">
+                        ↑ 25%
+                    </span>
+
+                </div>
+
+                <p>Places Visited</p>
+
+                <h2>28</h2>
+
+                <span class="stat-description">
+                    Destinations explored
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon green">
+                        💰
+                    </div>
+
+                    <span class="stat-change">
+                        This year
+                    </span>
+
+                </div>
+
+                <p>Total Budget</p>
+
+                <h2>₹1,85,000</h2>
+
+                <span class="stat-description">
+                    Planned travel budget
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon orange">
+                        💸
+                    </div>
+
+                    <span class="stat-change warning">
+                        82%
+                    </span>
+
+                </div>
+
+                <p>Total Spent</p>
+
+                <h2>₹1,51,400</h2>
+
+                <span class="stat-description">
+                    ₹33,600 remaining
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= MAIN REPORT GRID ================= -->
+
+        <section class="report-grid">
+
+
+            <!-- TRAVEL ACTIVITY -->
+
+            <div class="report-card large-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>Travel Activity</h3>
+
+                        <p>
+                            Your trips throughout the year
+                        </p>
+
+                    </div>
+
+                    <button class="more-button">
+                        ⋮
+                    </button>
+
+                </div>
+
+
+                <div class="chart-area">
+
+                    <div class="y-axis">
+
+                        <span>12</span>
+                        <span>9</span>
+                        <span>6</span>
+                        <span>3</span>
+                        <span>0</span>
+
+                    </div>
+
+
+                    <div class="chart">
+
+                        <div class="grid-line line-1"></div>
+                        <div class="grid-line line-2"></div>
+                        <div class="grid-line line-3"></div>
+                        <div class="grid-line line-4"></div>
+                        <div class="grid-line line-5"></div>
+
+
+                        <div class="bars">
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:35%;"></div>
+                                <span>Jan</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:48%;"></div>
+                                <span>Feb</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:30%;"></div>
+                                <span>Mar</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:62%;"></div>
+                                <span>Apr</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:45%;"></div>
+                                <span>May</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:70%;"></div>
+                                <span>Jun</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:55%;"></div>
+                                <span>Jul</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:82%;"></div>
+                                <span>Aug</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:65%;"></div>
+                                <span>Sep</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:92%;"></div>
+                                <span>Oct</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:60%;"></div>
+                                <span>Nov</span>
+                            </div>
+
+                            <div class="bar-wrapper">
+                                <div class="bar" style="height:75%;"></div>
+                                <span>Dec</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRIP STATUS -->
+
+            <div class="report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>Trip Status</h3>
+
+                        <p>
+                            Current trip distribution
+                        </p>
+
+                    </div>
+
+                    <button class="more-button">
+                        ⋮
+                    </button>
+
+                </div>
+
+
+                <div class="donut-section">
+
+                    <div class="donut">
+
+                        <div class="donut-inner">
+
+                            <strong>12</strong>
+                            <span>Total</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-list">
+
+                        <div class="status-item">
+
+                            <span>
+                                <i class="dot upcoming"></i>
+                                Upcoming
+                            </span>
+
+                            <strong>5</strong>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>
+                                <i class="dot ongoing"></i>
+                                Ongoing
+                            </span>
+
+                            <strong>2</strong>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>
+                                <i class="dot completed"></i>
+                                Completed
+                            </span>
+
+                            <strong>5</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= SECOND ROW ================= -->
+
+        <section class="report-grid second-grid">
+
+
+            <!-- EXPENSE SUMMARY -->
+
+            <div class="report-card large-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>Expense Summary</h3>
+
+                        <p>
+                            Where your travel money goes
+                        </p>
+
+                    </div>
+
+                    <button class="more-button">
+                        ⋮
+                    </button>
+
+                </div>
+
+
+                <div class="expense-list">
+
+
+                    <div class="expense-item">
+
+                        <div class="expense-name">
+
+                            <div class="expense-icon">
+                                🏨
+                            </div>
+
+                            <div>
+                                <strong>Accommodation</strong>
+                                <span>Hotels & stays</span>
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+
+                            <strong>₹48,500</strong>
+
+                            <div class="mini-progress">
+                                <div style="width:72%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div class="expense-name">
+
+                            <div class="expense-icon">
+                                🚗
+                            </div>
+
+                            <div>
+                                <strong>Transportation</strong>
+                                <span>Flights & local travel</span>
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+
+                            <strong>₹35,800</strong>
+
+                            <div class="mini-progress">
+                                <div style="width:58%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div class="expense-name">
+
+                            <div class="expense-icon">
+                                🍴
+                            </div>
+
+                            <div>
+                                <strong>Food & Dining</strong>
+                                <span>Restaurants & cafes</span>
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+
+                            <strong>₹28,600</strong>
+
+                            <div class="mini-progress">
+                                <div style="width:46%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div class="expense-name">
+
+                            <div class="expense-icon">
+                                🎟️
+                            </div>
+
+                            <div>
+                                <strong>Activities</strong>
+                                <span>Tickets & experiences</span>
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+
+                            <strong>₹21,400</strong>
+
+                            <div class="mini-progress">
+                                <div style="width:35%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expense-item">
+
+                        <div class="expense-name">
+
+                            <div class="expense-icon">
+                                🛍️
+                            </div>
+
+                            <div>
+                                <strong>Shopping</strong>
+                                <span>Souvenirs & shopping</span>
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+
+                            <strong>₹17,100</strong>
+
+                            <div class="mini-progress">
+                                <div style="width:28%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- TOP DESTINATIONS -->
+
+            <div class="report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>Top Destinations</h3>
+
+                        <p>
+                            Your most visited places
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="destination-list">
+
+
+                    <div class="destination-item">
+
+                        <div class="destination-number">
+                            01
+                        </div>
+
+                        <div class="destination-info">
+
+                            <strong>Goa</strong>
+
+                            <span>
+                                4 visits
+                            </span>
+
+                        </div>
+
+                        <span class="destination-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <div class="destination-item">
+
+                        <div class="destination-number">
+                            02
+                        </div>
+
+                        <div class="destination-info">
+
+                            <strong>Manali</strong>
+
+                            <span>
+                                3 visits
+                            </span>
+
+                        </div>
+
+                        <span class="destination-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <div class="destination-item">
+
+                        <div class="destination-number">
+                            03
+                        </div>
+
+                        <div class="destination-info">
+
+                            <strong>Jaipur</strong>
+
+                            <span>
+                                3 visits
+                            </span>
+
+                        </div>
+
+                        <span class="destination-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <div class="destination-item">
+
+                        <div class="destination-number">
+                            04
+                        </div>
+
+                        <div class="destination-info">
+
+                            <strong>Kerala</strong>
+
+                            <span>
+                                2 visits
+                            </span>
+
+                        </div>
+
+                        <span class="destination-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= INSIGHTS ================= -->
+
+        <section class="insight-section">
+
+            <div class="insight-icon">
+                ✨
+            </div>
+
+            <div class="insight-content">
+
+                <h3>Travel Insights</h3>
+
+                <p>
+                    You spent most of your travel budget on
+                    accommodation this year. Your most visited
+                    destination is Goa, with 4 trips.
+                </p>
+
+            </div>
+
+            <button class="insight-button">
+                View Details →
+            </button>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+</body>
+</html>

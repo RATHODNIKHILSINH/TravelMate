@@ -1,0 +1,336 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate | Itinerary</title>
+
+    <link rel="stylesheet"
+          href="{% static 'itinerary.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            Travel<span>Mate</span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <a href="{% url 'destinations' %}">Destinations</a>
+
+            <a href="{% url 'itinerary' %}" class="active">
+                Itinerary
+            </a>
+
+            <a href="{% url 'budget' %}">Budget</a>
+
+            <a href="{% url 'expense' %}">Expenses</a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="notification-btn">
+                🔔
+            </button>
+
+            <div class="profile">
+                👤
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ✈️ YOUR TRAVEL PLAN
+            </div>
+
+            <h1>
+                Your Perfect
+                <span>Itinerary</span>
+            </h1>
+
+            <p>
+                Plan every moment of your journey.
+                Explore destinations, manage activities,
+                and enjoy a stress-free trip.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn">
+                    + Add Activity
+                </button>
+
+                <button class="secondary-btn">
+                    📅 Manage Trip
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRIP SUMMARY -->
+
+    <section class="summary">
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📍
+            </div>
+
+            <div>
+                <span>Destination</span>
+                <strong>Ahmedabad</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📅
+            </div>
+
+            <div>
+                <span>Duration</span>
+                <strong>3 Days</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                💰
+            </div>
+
+            <div>
+                <span>Estimated Budget</span>
+                <strong>₹7,500</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🗺️
+            </div>
+
+            <div>
+                <span>Activities</span>
+                <strong>12 Activities</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ITINERARY -->
+
+    <main class="itinerary-container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">
+                    TRIP TIMELINE
+                </span>
+
+                <h2>
+                    Day-by-Day Plan
+                </h2>
+            </div>
+
+            <button class="filter-btn">
+                ☰ Filter
+            </button>
+
+        </div>
+
+
+        {% for day in itinerary_data %}
+
+        <section class="day-card">
+
+            <!-- DAY HEADER -->
+
+            <div class="day-header">
+
+                <div class="day-number">
+
+                    <span>DAY</span>
+
+                    {{ day.day }}
+
+                </div>
+
+                <div class="day-info">
+
+                    <h3>
+                        {{ day.title }}
+                    </h3>
+
+                    <p>
+                        📍 {{ day.location }}
+                        &nbsp; • &nbsp;
+                        📅 {{ day.date }}
+                    </p>
+
+                </div>
+
+                <div class="day-budget">
+
+                    <span>
+                        Estimated
+                    </span>
+
+                    <strong>
+                        {{ day.budget }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE -->
+
+            <div class="timeline">
+
+                {% for activity in day.activities %}
+
+                <div class="timeline-item">
+
+                    <div class="timeline-time">
+
+                        {{ activity.time }}
+
+                    </div>
+
+
+                    <div class="timeline-line">
+
+                        <div class="timeline-dot">
+                            {{ activity.icon }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-card">
+
+                        <div class="activity-content">
+
+                            <h4>
+                                {{ activity.title }}
+                            </h4>
+
+                            <p>
+                                {{ activity.description }}
+                            </p>
+
+                        </div>
+
+                        <button class="activity-menu">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- DAY FOOTER -->
+
+            <div class="day-footer">
+
+                <button class="add-activity">
+                    + Add Activity
+                </button>
+
+                <button class="edit-day">
+                    ✏️ Edit Day
+                </button>
+
+            </div>
+
+        </section>
+
+        {% endfor %}
+
+
+        <!-- ADD DAY -->
+
+        <button class="add-day">
+            <span>＋</span>
+            Add Another Day
+        </button>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Travel<span>Mate</span>
+        </div>
+
+        <p>
+            Plan better. Travel smarter. Create memories.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="/">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 TravelMate. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

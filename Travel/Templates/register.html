@@ -1,0 +1,787 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Create Account</title>
+
+    <link rel="stylesheet"
+          href="{% static 'register.css' %}">
+
+</head>
+
+<body>
+
+<div class="page">
+
+
+    <!-- =====================================================
+         LEFT VISUAL PANEL
+    ====================================================== -->
+
+    <section class="visual-panel">
+
+        <div class="visual-overlay"></div>
+
+        <div class="visual-content">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✈
+                </div>
+
+                <div>
+                    <strong>TravelMate</strong>
+                    <span>Travel Planner</span>
+                </div>
+
+            </div>
+
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    YOUR JOURNEY STARTS HERE
+                </span>
+
+                <h1>
+                    Explore more.<br>
+                    <span>Travel smarter.</span>
+                </h1>
+
+                <p>
+                    Create your TravelMate account and start
+                    planning unforgettable journeys, budgets,
+                    itineraries and adventures.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🗺
+                        </div>
+
+                        <div>
+                            <strong>
+                                Plan your trips
+                            </strong>
+
+                            <span>
+                                Build organized travel plans
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            💰
+                        </div>
+
+                        <div>
+                            <strong>
+                                Track your budget
+                            </strong>
+
+                            <span>
+                                Keep your expenses under control
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ❤️
+                        </div>
+
+                        <div>
+                            <strong>
+                                Save favorites
+                            </strong>
+
+                            <span>
+                                Keep your favorite places nearby
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-footer">
+
+                <span>
+                    © 2026 TravelMate
+                </span>
+
+                <span>
+                    Plan • Explore • Experience
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Decorative elements -->
+
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+
+        <div class="floating-card card-one">
+            📍 Goa
+        </div>
+
+        <div class="floating-card card-two">
+            🏔 Manali
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         REGISTER PANEL
+    ====================================================== -->
+
+    <main class="register-panel">
+
+
+        <div class="register-container">
+
+
+            <div class="mobile-logo">
+
+                <div class="brand-icon">
+                    ✈
+                </div>
+
+                <strong>
+                    TravelMate
+                </strong>
+
+            </div>
+
+
+            <div class="register-header">
+
+                <span class="small-label">
+                    GET STARTED
+                </span>
+
+                <h2>
+                    Create your account
+                </h2>
+
+                <p>
+                    Join TravelMate and start planning your next adventure.
+                </p>
+
+            </div>
+
+
+
+            <!-- SOCIAL REGISTER -->
+
+            <div class="social-buttons">
+
+                <button type="button"
+                        onclick="socialLogin('Google')">
+
+                    <span class="google-icon">
+                        G
+                    </span>
+
+                    Continue with Google
+
+                </button>
+
+
+                <button type="button"
+                        onclick="socialLogin('GitHub')">
+
+                    <span class="github-icon">
+                        ◉
+                    </span>
+
+                    Continue with GitHub
+
+                </button>
+
+            </div>
+
+
+            <div class="divider">
+
+                <span></span>
+
+                <p>
+                    OR REGISTER WITH EMAIL
+                </p>
+
+                <span></span>
+
+            </div>
+
+
+
+            <!-- REGISTER FORM -->
+
+            <form id="registerForm"
+                  onsubmit="registerUser(event)">
+
+
+                <!-- NAME -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            First Name
+                        </label>
+
+                        <div class="input-box">
+
+                            <span class="input-icon">
+                                ♙
+                            </span>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="Nikhil"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Last Name
+                        </label>
+
+                        <div class="input-box">
+
+                            <span class="input-icon">
+                                ♙
+                            </span>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Rathod"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            @
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number
+                        <span class="optional">
+                            Optional
+                        </span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="country-code">
+                            +91
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="98765 43210"
+                            maxlength="10"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ◈
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a strong password"
+                            oninput="checkPassword()"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('password', this)">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="strength">
+
+                        <div class="strength-bars">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                        <small id="strengthText">
+                            Password strength
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        Confirm Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ◈
+                        </span>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Repeat your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('confirmPassword', this)">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <small id="passwordMessage"
+                           class="password-message">
+                    </small>
+
+                </div>
+
+
+
+                <!-- TERMS -->
+
+                <label class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <p>
+                        I agree to the
+                        <a href="#">
+                            Terms of Service
+                        </a>
+                        and
+                        <a href="#">
+                            Privacy Policy
+                        </a>.
+                    </p>
+
+                </label>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="register-btn">
+
+                    <span>
+                        Create Account
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- LOGIN -->
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="#">
+                    Sign in
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+====================================================== -->
+
+<div class="toast"
+     id="toast">
+
+    <div class="toast-icon">
+        ✓
+    </div>
+
+    <div>
+
+        <strong id="toastTitle">
+            Account Created
+        </strong>
+
+        <span id="toastText">
+            Welcome to TravelMate!
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// =====================================================
+// PASSWORD SHOW / HIDE
+// =====================================================
+
+function togglePassword(id, button) {
+
+    const input =
+        document.getElementById(id);
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        button.textContent = "🙈";
+
+    } else {
+
+        input.type = "password";
+
+        button.textContent = "👁";
+
+    }
+
+}
+
+
+
+// =====================================================
+// PASSWORD STRENGTH
+// =====================================================
+
+function checkPassword() {
+
+    const password =
+        document.getElementById("password").value;
+
+    const bars =
+        document.querySelectorAll(".strength-bars span");
+
+    const text =
+        document.getElementById("strengthText");
+
+
+    let strength = 0;
+
+
+    if (password.length >= 8) {
+        strength++;
+    }
+
+
+    if (/[A-Z]/.test(password)) {
+        strength++;
+    }
+
+
+    if (/[0-9]/.test(password)) {
+        strength++;
+    }
+
+
+    if (/[^A-Za-z0-9]/.test(password)) {
+        strength++;
+    }
+
+
+    bars.forEach(bar => {
+
+        bar.classList.remove(
+            "weak",
+            "medium",
+            "strong"
+        );
+
+    });
+
+
+    if (password.length === 0) {
+
+        text.textContent =
+            "Password strength";
+
+        return;
+
+    }
+
+
+    if (strength <= 1) {
+
+        bars[0].classList.add("weak");
+
+        text.textContent =
+            "Weak password";
+
+    }
+
+    else if (strength === 2) {
+
+        bars[0].classList.add("medium");
+        bars[1].classList.add("medium");
+
+        text.textContent =
+            "Medium password";
+
+    }
+
+    else if (strength === 3) {
+
+        bars[0].classList.add("strong");
+        bars[1].classList.add("strong");
+        bars[2].classList.add("strong");
+
+        text.textContent =
+            "Good password";
+
+    }
+
+    else {
+
+        bars.forEach(bar => {
+            bar.classList.add("strong");
+        });
+
+        text.textContent =
+            "Strong password";
+
+    }
+
+}
+
+
+
+// =====================================================
+// REGISTER
+// =====================================================
+
+function registerUser(event) {
+
+    event.preventDefault();
+
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+    const message =
+        document.getElementById("passwordMessage");
+
+
+    if (password !== confirmPassword) {
+
+        message.textContent =
+            "Passwords do not match.";
+
+        message.className =
+            "password-message error";
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Passwords match ✓";
+
+    message.className =
+        "password-message success";
+
+
+    showToast(
+        "Account Created",
+        "Welcome to TravelMate!"
+    );
+
+}
+
+
+
+// =====================================================
+// SOCIAL LOGIN
+// =====================================================
+
+function socialLogin(provider) {
+
+    showToast(
+        provider + " Registration",
+        "Social registration selected."
+    );
+
+}
+
+
+
+// =====================================================
+// TOAST
+// =====================================================
+
+function showToast(title, text) {
+
+    const toast =
+        document.getElementById("toast");
+
+    document.getElementById("toastTitle")
+        .textContent = title;
+
+    document.getElementById("toastText")
+        .textContent = text;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+</script>
+
+
+</body>
+
+</html>

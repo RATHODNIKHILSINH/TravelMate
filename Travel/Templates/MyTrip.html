@@ -1,0 +1,643 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Trips | TravelMate</title>
+
+    <link rel="stylesheet"
+          href="{% static 'mytrips.css' %}">
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <span>✈️</span>
+            TravelMate
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="{% url 'home' %}" class="nav-item">
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+                <span>📍</span>
+                <span>Destinations</span>
+            </a>
+
+            <a href="{% url 'my_trips' %}"
+               class="nav-item active">
+
+                <span>🧳</span>
+                <span>My Trips</span>
+
+            </a>
+
+            <a href="{% url 'itinerary' %}"
+               class="nav-item">
+
+                <span>📋</span>
+                <span>Itinerary</span>
+
+            </a>
+
+            <a href="{% url 'budget' %}" class="nav-item">
+                <span>💰</span>
+                <span>Budget</span>
+            </a>
+
+            <a href="{% url 'expense' %}" class="nav-item">
+                <span>💸</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+                <span>❤️</span>
+                <span>Favorites</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="{% url 'settings' %}" class="nav-item">
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+            <a href="{% url 'logout' %}" class="nav-item">
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-menu">
+                ☰
+            </div>
+
+            <div class="brand-mobile">
+                ✈️ TravelMate
+            </div>
+
+
+            <div class="header-actions">
+
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        alt="Profile">
+
+                    <div class="profile-info">
+
+                        <strong>Nikhil</strong>
+
+                        <small>Traveler</small>
+
+                    </div>
+
+                    <span>⌄</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="page-header">
+
+            <div class="title-section">
+
+                <div class="title-icon">
+                    🧳
+                </div>
+
+                <div>
+
+                    <div class="breadcrumb">
+                        TravelMate / My Trips
+                    </div>
+
+                    <h1>My Trips</h1>
+
+                    <p>
+                        Manage all your journeys in one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-buttons">
+
+                <button class="secondary-btn">
+                    🔍 Search
+                </button>
+
+                <button class="primary-btn"
+                        onclick="openTripModal()">
+
+                    ＋ Create Trip
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TRIP STATS ================= -->
+
+        <section class="trip-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    🧳
+                </div>
+
+                <div>
+                    <span>Total Trips</span>
+                    <strong>{{ trips|length }}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    ✈️
+                </div>
+
+                <div>
+                    <span>Upcoming</span>
+
+                    <strong>
+                        2
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Completed</span>
+
+                    <strong>
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>Total Budget</span>
+
+                    <strong>
+                        ₹85K
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <section class="trip-toolbar">
+
+            <div>
+
+                <h2>Your Trips</h2>
+
+                <p>
+                    Keep track of your planned and completed journeys.
+                </p>
+
+            </div>
+
+
+            <div class="filters">
+
+                <button class="filter active">
+                    All
+                </button>
+
+                <button class="filter">
+                    Upcoming
+                </button>
+
+                <button class="filter">
+                    Completed
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TRIP GRID ================= -->
+
+        <section class="trip-grid">
+
+
+            {% for trip in trips %}
+
+            <article class="trip-card">
+
+
+                <!-- IMAGE / ICON -->
+
+                <div class="trip-cover">
+
+                    <div class="trip-icon">
+                        {{ trip.icon }}
+                    </div>
+
+
+                    <span class="trip-status
+                        {% if trip.status == 'Completed' %}
+                            completed
+                        {% else %}
+                            upcoming
+                        {% endif %}">
+
+                        {{ trip.status }}
+
+                    </span>
+
+
+                    <button class="more-btn">
+                        ⋮
+                    </button>
+
+                </div>
+
+
+
+                <!-- CONTENT -->
+
+                <div class="trip-content">
+
+                    <div class="trip-location">
+
+                        📍 {{ trip.location }}
+
+                    </div>
+
+
+                    <h3>
+                        {{ trip.title }}
+                    </h3>
+
+
+                    <div class="trip-date">
+
+                        <span>
+                            📅 {{ trip.start_date }}
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                        <span>
+                            {{ trip.end_date }}
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- DETAILS -->
+
+                    <div class="trip-details">
+
+                        <div>
+
+                            <span>Duration</span>
+
+                            <strong>
+                                {{ trip.duration }}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Budget</span>
+
+                            <strong>
+                                {{ trip.budget }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROGRESS -->
+
+                    <div class="trip-progress">
+
+                        <div class="progress-header">
+
+                            <span>
+                                Trip Progress
+                            </span>
+
+                            <strong>
+                                {{ trip.progress }}%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                style="width:{{ trip.progress }}%;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FOOTER -->
+
+                    <div class="trip-footer">
+
+                        <div class="spent">
+
+                            <span>Spent</span>
+
+                            <strong>
+                                {{ trip.spent }}
+                            </strong>
+
+                        </div>
+
+
+                        <a href="{% url 'itinerary' %}"
+                           class="view-btn">
+
+                            View Trip
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+
+
+            <!-- ADD TRIP CARD -->
+
+            <button class="add-trip-card"
+                    onclick="openTripModal()">
+
+                <div class="add-icon">
+                    ＋
+                </div>
+
+                <h3>
+                    Create New Trip
+                </h3>
+
+                <p>
+                    Start planning your next adventure.
+                </p>
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                © 2026 TravelMate. Plan better. Travel smarter.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Help
+                </a>
+
+                <a href="#">
+                    Contact
+                </a>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+
+    <!-- ================= CREATE TRIP MODAL ================= -->
+
+    <div class="modal-overlay"
+         id="tripModal">
+
+        <div class="modal">
+
+            <button class="close-modal"
+                    onclick="closeTripModal()">
+                ×
+            </button>
+
+            <div class="modal-icon">
+                ✈️
+            </div>
+
+            <h2>
+                Create New Trip
+            </h2>
+
+            <p>
+                Start planning your next journey.
+            </p>
+
+
+            <form>
+
+                <div class="input-group">
+
+                    <label>
+                        Trip Name
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="e.g. Goa Beach Trip">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="e.g. Goa, India">
+
+                </div>
+
+
+                <div class="date-row">
+
+                    <div class="input-group">
+
+                        <label>
+                            Start Date
+                        </label>
+
+                        <input type="date">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            End Date
+                        </label>
+
+                        <input type="date">
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="create-btn">
+
+                    Create Trip
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openTripModal() {
+            document
+                .getElementById("tripModal")
+                .classList.add("show");
+        }
+
+        function closeTripModal() {
+            document
+                .getElementById("tripModal")
+                .classList.remove("show");
+        }
+
+        document
+            .getElementById("tripModal")
+            .addEventListener("click", function(event) {
+
+                if (event.target === this) {
+                    closeTripModal();
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

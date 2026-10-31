@@ -1,0 +1,1231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Budget Planner</title>
+
+    <link rel="stylesheet" href="{% static 'budget.css' %}">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">✈</span>
+
+            <span>TravelMate</span>
+
+        </div>
+
+
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="{% url 'home' %}" class="nav-item">
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+
+                <span class="nav-icon">🌍</span>
+
+                <span>Destinations</span>
+
+            </a>
+
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+
+                <span class="nav-icon">🧳</span>
+
+                <span>My Trips</span>
+
+            </a>
+
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+
+                <span class="nav-icon">📋</span>
+
+                <span>Itinerary</span>
+
+            </a>
+
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+
+                <span class="nav-icon">♥</span>
+
+                <span>Favorites</span>
+
+            </a>
+
+
+            <a href="{% url 'reports' %}" class="nav-item">
+
+                <span class="nav-icon">📊</span>
+
+                <span>Reports</span>
+
+            </a>
+
+
+            <a href="#" class="nav-item active">
+
+                <span class="nav-icon">💰</span>
+
+                <span>Budget Planner</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="menu-title second-title">
+            ACCOUNT
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item">
+
+                <span class="nav-icon">⚙</span>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a href="#" class="nav-item">
+
+                <span class="nav-icon">↪</span>
+
+                <span>Logout</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="travel-tip">
+
+                <div class="tip-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <strong>Smart Planning</strong>
+
+                    <p>
+                        Plan your budget before travelling.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+
+            <div class="page-heading">
+
+                <div class="breadcrumb">
+
+                    TravelMate
+                    <span>/</span>
+                    Budget Planner
+
+                </div>
+
+
+                <h1>
+                    Budget Planner
+                </h1>
+
+
+                <p>
+                    Plan, manage and control your travel expenses.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <button class="icon-button">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        N
+                    </div>
+
+
+                    <div class="user-info">
+
+                        <strong>Nikhil</strong>
+
+                        <span>
+                            Traveler
+                        </span>
+
+                    </div>
+
+
+                    <span class="arrow">
+                        ⌄
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             BUDGET HERO
+        ================================================== -->
+
+        <section class="budget-hero">
+
+
+            <div class="hero-content">
+
+
+                <div class="hero-icon">
+                    💰
+                </div>
+
+
+                <div>
+
+                    <span class="hero-label">
+                        CURRENT TRIP
+                    </span>
+
+
+                    <h2>
+                        Goa Beach Escape
+                    </h2>
+
+
+                    <p>
+                        15 Oct 2026 — 19 Oct 2026
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button class="trip-button">
+                Change Trip ▾
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUDGET OVERVIEW
+        ================================================== -->
+
+        <section class="budget-overview">
+
+
+            <div class="overview-card total-budget">
+
+                <div class="overview-top">
+
+                    <div class="overview-icon">
+                        💰
+                    </div>
+
+                    <span>
+                        TOTAL BUDGET
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    ₹25,000
+                </h2>
+
+
+                <p>
+                    Your planned trip budget
+                </p>
+
+            </div>
+
+
+
+            <div class="overview-card spent">
+
+                <div class="overview-top">
+
+                    <div class="overview-icon">
+                        💸
+                    </div>
+
+                    <span>
+                        TOTAL SPENT
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    ₹18,500
+                </h2>
+
+
+                <p>
+                    74% of your budget
+                </p>
+
+            </div>
+
+
+
+            <div class="overview-card remaining">
+
+                <div class="overview-top">
+
+                    <div class="overview-icon">
+                        💵
+                    </div>
+
+                    <span>
+                        REMAINING
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    ₹6,500
+                </h2>
+
+
+                <p>
+                    Available budget
+                </p>
+
+            </div>
+
+
+
+            <div class="overview-card daily">
+
+                <div class="overview-top">
+
+                    <div class="overview-icon">
+                        📅
+                    </div>
+
+                    <span>
+                        DAILY LIMIT
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    ₹1,625
+                </h2>
+
+
+                <p>
+                    Recommended per day
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUDGET PROGRESS
+        ================================================== -->
+
+        <section class="content-grid">
+
+
+            <div class="panel budget-progress-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Budget Progress
+                        </h3>
+
+                        <p>
+                            Track how much of your budget you've used.
+                        </p>
+
+                    </div>
+
+
+                    <span class="percentage">
+                        74%
+                    </span>
+
+                </div>
+
+
+                <div class="big-progress">
+
+                    <div
+                        class="big-progress-fill"
+                        style="width:74%;">
+                    </div>
+
+                </div>
+
+
+                <div class="progress-details">
+
+                    <span>
+                        ₹0
+                    </span>
+
+                    <strong>
+                        ₹18,500 spent
+                    </strong>
+
+                    <span>
+                        ₹25,000
+                    </span>
+
+                </div>
+
+
+                <div class="budget-message">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            You're within your budget
+                        </strong>
+
+                        <p>
+                            You still have ₹6,500 available for the rest
+                            of your trip.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK ADD -->
+
+            <div class="panel quick-add-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Quick Budget
+                        </h3>
+
+                        <p>
+                            Add an estimated expense.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-buttons">
+
+                    <button>
+                        + ₹500
+                    </button>
+
+                    <button>
+                        + ₹1,000
+                    </button>
+
+                    <button>
+                        + ₹2,500
+                    </button>
+
+                    <button>
+                        + ₹5,000
+                    </button>
+
+                </div>
+
+
+                <button class="custom-button">
+                    + Add Custom Amount
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPENSE CATEGORIES
+        ================================================== -->
+
+        <section class="panel categories-panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+                    <h3>
+                        Budget by Category
+                    </h3>
+
+                    <p>
+                        See where your travel budget is allocated.
+                    </p>
+
+                </div>
+
+
+                <button class="add-category">
+                    + Add Category
+                </button>
+
+            </div>
+
+
+
+            <div class="category-grid">
+
+
+                <!-- ACCOMMODATION -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon accommodation">
+                            🏨
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Accommodation
+                            </strong>
+
+                            <span>
+                                Hotels & stays
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹7,500
+                        </strong>
+
+                        <span>
+                            / ₹8,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:94%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            94% used
+                        </span>
+
+                        <span>
+                            ₹500 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TRANSPORT -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon transport">
+                            🚗
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Transportation
+                            </strong>
+
+                            <span>
+                                Flights & local travel
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹4,200
+                        </strong>
+
+                        <span>
+                            / ₹5,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:84%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            84% used
+                        </span>
+
+                        <span>
+                            ₹800 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FOOD -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon food">
+                            🍴
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Food & Dining
+                            </strong>
+
+                            <span>
+                                Restaurants & cafes
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹3,200
+                        </strong>
+
+                        <span>
+                            / ₹4,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:80%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            80% used
+                        </span>
+
+                        <span>
+                            ₹800 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACTIVITIES -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon activities">
+                            🎟️
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Activities
+                            </strong>
+
+                            <span>
+                                Experiences & tickets
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹2,100
+                        </strong>
+
+                        <span>
+                            / ₹3,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:70%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            70% used
+                        </span>
+
+                        <span>
+                            ₹900 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SHOPPING -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon shopping">
+                            🛍️
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Shopping
+                            </strong>
+
+                            <span>
+                                Souvenirs & shopping
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹1,000
+                        </strong>
+
+                        <span>
+                            / ₹2,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:50%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            50% used
+                        </span>
+
+                        <span>
+                            ₹1,000 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- OTHER -->
+
+                <div class="category-card">
+
+
+                    <div class="category-heading">
+
+                        <div class="category-icon other">
+                            📦
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Other
+                            </strong>
+
+                            <span>
+                                Miscellaneous
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-amount">
+
+                        <strong>
+                            ₹500
+                        </strong>
+
+                        <span>
+                            / ₹3,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-progress">
+
+                        <div style="width:17%;"></div>
+
+                    </div>
+
+
+                    <div class="category-footer">
+
+                        <span>
+                            17% used
+                        </span>
+
+                        <span>
+                            ₹2,500 left
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT EXPENSES
+        ================================================== -->
+
+        <section class="panel expenses-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Recent Expenses
+                    </h3>
+
+                    <p>
+                        Latest spending from your trip.
+                    </p>
+
+                </div>
+
+
+                <button class="view-all">
+                    View All →
+                </button>
+
+            </div>
+
+
+            <div class="expense-table">
+
+
+                <div class="table-header">
+
+                    <span>
+                        EXPENSE
+                    </span>
+
+                    <span>
+                        CATEGORY
+                    </span>
+
+                    <span>
+                        DATE
+                    </span>
+
+                    <span>
+                        AMOUNT
+                    </span>
+
+                </div>
+
+
+
+                <div class="expense-row">
+
+
+                    <div class="expense-name">
+
+                        <div class="small-expense-icon">
+                            🏨
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Hotel Booking
+                            </strong>
+
+                            <span>
+                                Goa Beach Resort
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="expense-category">
+                        Accommodation
+                    </span>
+
+
+                    <span class="expense-date">
+                        15 Oct 2026
+                    </span>
+
+
+                    <strong class="expense-price">
+                        ₹3,500
+                    </strong>
+
+                </div>
+
+
+
+                <div class="expense-row">
+
+
+                    <div class="expense-name">
+
+                        <div class="small-expense-icon">
+                            🚕
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Airport Taxi
+                            </strong>
+
+                            <span>
+                                Airport → Hotel
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="expense-category">
+                        Transport
+                    </span>
+
+
+                    <span class="expense-date">
+                        15 Oct 2026
+                    </span>
+
+
+                    <strong class="expense-price">
+                        ₹850
+                    </strong>
+
+                </div>
+
+
+
+                <div class="expense-row">
+
+
+                    <div class="expense-name">
+
+                        <div class="small-expense-icon">
+                            🍴
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Dinner
+                            </strong>
+
+                            <span>
+                                Beachside Restaurant
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="expense-category">
+                        Food
+                    </span>
+
+
+                    <span class="expense-date">
+                        16 Oct 2026
+                    </span>
+
+
+                    <strong class="expense-price">
+                        ₹1,200
+                    </strong>
+
+                </div>
+
+
+
+                <div class="expense-row">
+
+
+                    <div class="expense-name">
+
+                        <div class="small-expense-icon">
+                            🎟️
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Water Sports
+                            </strong>
+
+                            <span>
+                                Parasailing & Jet Ski
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="expense-category">
+                        Activities
+                    </span>
+
+
+                    <span class="expense-date">
+                        17 Oct 2026
+                    </span>
+
+
+                    <strong class="expense-price">
+                        ₹1,800
+                    </strong>
+
+                </div>
+
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUDGET TIP
+        ================================================== -->
+
+        <section class="budget-tip">
+
+
+            <div class="tip-large-icon">
+                💡
+            </div>
+
+
+            <div class="tip-content">
+
+                <span>
+                    SMART BUDGET TIP
+                </span>
+
+                <h3>
+                    Keep ₹1,300 as an emergency buffer.
+                </h3>
+
+                <p>
+                    Your current spending is within your planned
+                    budget. Avoid using the remaining amount too
+                    quickly so you have enough for unexpected expenses.
+                </p>
+
+            </div>
+
+
+            <div class="tip-badge">
+                Good Budget ✓
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,532 @@
+/* =====================================================
+   TRAVELMATE — LOGOUT PAGE
+   Premium Dark Glass UI
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050914;
+    --card: rgba(10, 20, 35, 0.88);
+    --border: rgba(255, 255, 255, 0.08);
+
+    --text: #f5f7fb;
+    --muted: #8b9ab0;
+
+    --purple: #7c5cff;
+    --cyan: #21d4fd;
+
+    --danger: #ff5c7a;
+}
+
+body {
+    min-height: 100vh;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(124, 92, 255, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(33, 212, 253, 0.10),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.15;
+
+    animation: floatGlow 8s ease-in-out infinite;
+}
+
+.glow-one {
+    background: var(--purple);
+    top: -180px;
+    left: -150px;
+}
+
+.glow-two {
+    background: var(--cyan);
+    right: -150px;
+    bottom: -180px;
+
+    animation-delay: -4s;
+}
+
+@keyframes floatGlow {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -25px);
+    }
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.logout-container {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 30px 20px;
+
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    animation: pageEnter 0.7s ease;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.logout-card {
+    padding: 42px 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 29, 48, 0.94),
+            rgba(7, 15, 27, 0.94)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(20px);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 8px 25px rgba(124, 92, 255, 0.35);
+
+    font-size: 19px;
+
+    transform: rotate(-8deg);
+}
+
+
+/* =====================================================
+   LOGOUT ICON
+===================================================== */
+
+.logout-icon {
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 92, 122, 0.10);
+
+    border: 1px solid rgba(255, 92, 122, 0.22);
+
+    box-shadow:
+        0 15px 40px rgba(255, 92, 122, 0.10);
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.logout-icon span {
+    font-size: 34px;
+    color: var(--danger);
+}
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+h1 {
+    font-size: 32px;
+    line-height: 1.2;
+
+    margin-bottom: 12px;
+
+    letter-spacing: -0.8px;
+}
+
+.subtitle {
+    color: var(--muted);
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    max-width: 370px;
+
+    margin: 0 auto 25px;
+}
+
+
+/* =====================================================
+   USER INFO
+===================================================== */
+
+.user-info {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px;
+
+    margin-bottom: 22px;
+
+    text-align: left;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+.user-info:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(124, 92, 255, 0.35);
+
+    background: rgba(124, 92, 255, 0.06);
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--cyan)
+        );
+
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.user-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 14px;
+}
+
+.user-info span {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   LOGOUT BUTTON
+===================================================== */
+
+.logout-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px 18px;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f70,
+            #ff6a86
+        );
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(255, 92, 122, 0.20);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+.logout-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 38px rgba(255, 92, 122, 0.32);
+
+    filter: brightness(1.08);
+}
+
+.logout-btn:active {
+    transform: scale(0.98);
+}
+
+.arrow {
+    font-size: 20px;
+
+    transition: transform 0.3s ease;
+}
+
+.logout-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* =====================================================
+   CANCEL BUTTON
+===================================================== */
+
+.cancel-btn {
+    display: block;
+
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    color: #b7c2d3;
+
+    text-decoration: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(255, 255, 255, 0.025);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.cancel-btn:hover {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(124, 92, 255, 0.35);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   SECURITY NOTE
+===================================================== */
+
+.security-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 24px;
+
+    color: #66758b;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   COPYRIGHT
+===================================================== */
+
+.copyright {
+    margin-top: 22px;
+
+    color: #536176;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .logout-container {
+        padding: 20px 15px;
+    }
+
+    .logout-card {
+        padding: 32px 22px;
+
+        border-radius: 22px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .logout-icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    .logout-icon span {
+        font-size: 29px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .logout-card {
+        padding: 28px 18px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+}
