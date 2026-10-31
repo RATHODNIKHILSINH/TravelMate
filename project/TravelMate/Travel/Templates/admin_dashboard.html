@@ -1,0 +1,1349 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{% static 'admin.css' %}">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            ✈
+        </div>
+
+        <div>
+            <h2>TravelMate</h2>
+            <span>Admin Panel</span>
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        ADMIN MENU
+    </div>
+
+
+    <nav>
+
+        <a href="{% url 'admin_dashboard' %}"
+           class="nav-item active">
+
+            <span class="nav-icon">⌂</span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="#users"
+           class="nav-item">
+
+            <span class="nav-icon">♙</span>
+
+            <span>Users</span>
+
+        </a>
+
+
+        <a href="#destinations"
+           class="nav-item">
+
+            <span class="nav-icon">◉</span>
+
+            <span>Destinations</span>
+
+        </a>
+
+
+        <a href="#trips"
+           class="nav-item">
+
+            <span class="nav-icon">🧳</span>
+
+            <span>Trips</span>
+
+        </a>
+
+
+        <a href="#expenses"
+           class="nav-item">
+
+            <span class="nav-icon">₹</span>
+
+            <span>Expenses</span>
+
+        </a>
+
+
+        <a href="#reports"
+           class="nav-item">
+
+            <span class="nav-icon">▥</span>
+
+            <span>Reports</span>
+
+        </a>
+
+
+        <a href="#activity"
+           class="nav-item">
+
+            <span class="nav-icon">⚡</span>
+
+            <span>Activity</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="menu-title account-title">
+        SYSTEM
+    </div>
+
+
+    <nav>
+
+        <a href="{% url 'settings' %}"
+           class="nav-item">
+
+            <span class="nav-icon">⚙</span>
+
+            <span>Settings</span>
+
+        </a>
+
+
+        <a href="{% url 'home' %}"
+           class="nav-item">
+
+            <span class="nav-icon">↩</span>
+
+            <span>Back to Website</span>
+
+        </a>
+
+
+        <a href="#"
+           class="nav-item">
+
+            <span class="nav-icon">⇥</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="admin-profile">
+
+            <div class="profile-avatar">
+                N
+            </div>
+
+            <div class="profile-info">
+
+                <strong>Nikhil Rathod</strong>
+
+                <span>Administrator</span>
+
+            </div>
+
+            <span class="more">
+                •••
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <div class="breadcrumb">
+
+                TravelMate
+                <span>/</span>
+                Admin Dashboard
+
+            </div>
+
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+
+            <p>
+                Monitor your TravelMate platform and manage everything from one place.
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+
+            <button class="icon-btn">
+
+                🔔
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <button class="admin-user">
+
+                <div class="profile-avatar">
+                    N
+                </div>
+
+                <div>
+
+                    <strong>
+                        Nikhil
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <span class="arrow">
+                    ▾
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         WELCOME BANNER
+    ================================================= -->
+
+    <section class="welcome-banner">
+
+        <div class="welcome-content">
+
+            <span class="welcome-label">
+                ADMIN CONTROL CENTER
+            </span>
+
+            <h2>
+                Welcome back, Nikhil 👋
+            </h2>
+
+            <p>
+                Here's what's happening across your TravelMate platform today.
+            </p>
+
+        </div>
+
+
+        <div class="welcome-decoration">
+
+            <div class="orbit orbit-one"></div>
+
+            <div class="orbit orbit-two"></div>
+
+            <div class="plane">
+                ✈
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================= -->
+
+    <section class="stats-grid">
+
+
+        <!-- USERS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    TOTAL USERS
+                </span>
+
+                <div class="stat-icon purple">
+                    ♙
+                </div>
+
+            </div>
+
+
+            <h2>
+                1,248
+            </h2>
+
+
+            <div class="stat-footer">
+
+                <span class="growth">
+                    ↑ 12.8%
+                </span>
+
+                <span>
+                    vs last month
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TRIPS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    TOTAL TRIPS
+                </span>
+
+                <div class="stat-icon cyan">
+                    🧳
+                </div>
+
+            </div>
+
+
+            <h2>
+                3,642
+            </h2>
+
+
+            <div class="stat-footer">
+
+                <span class="growth">
+                    ↑ 18.4%
+                </span>
+
+                <span>
+                    this month
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DESTINATIONS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    DESTINATIONS
+                </span>
+
+                <div class="stat-icon green">
+                    ◉
+                </div>
+
+            </div>
+
+
+            <h2>
+                186
+            </h2>
+
+
+            <div class="stat-footer">
+
+                <span class="growth">
+                    +14
+                </span>
+
+                <span>
+                    new destinations
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- EXPENSE -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    TOTAL EXPENSES
+                </span>
+
+                <div class="stat-icon yellow">
+                    ₹
+                </div>
+
+            </div>
+
+
+            <h2>
+                ₹48.6L
+            </h2>
+
+
+            <div class="stat-footer">
+
+                <span class="growth yellow-text">
+                    ↑ 9.6%
+                </span>
+
+                <span>
+                    this month
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ANALYTICS
+    ================================================= -->
+
+    <section class="analytics-grid">
+
+
+        <!-- USER/TRIP ANALYTICS -->
+
+        <div class="panel analytics-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        PLATFORM ANALYTICS
+                    </span>
+
+                    <h2>
+                        Growth Overview
+                    </h2>
+
+                </div>
+
+
+                <select>
+
+                    <option>
+                        Last 7 Months
+                    </option>
+
+                    <option>
+                        Last 30 Days
+                    </option>
+
+                    <option>
+                        This Year
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <div class="chart-y">
+
+                    <span>
+                        5K
+                    </span>
+
+                    <span>
+                        4K
+                    </span>
+
+                    <span>
+                        3K
+                    </span>
+
+                    <span>
+                        2K
+                    </span>
+
+                    <span>
+                        1K
+                    </span>
+
+                    <span>
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="chart-area">
+
+                    <div class="chart-line one"></div>
+                    <div class="chart-line two"></div>
+                    <div class="chart-line three"></div>
+                    <div class="chart-line four"></div>
+                    <div class="chart-line five"></div>
+
+
+                    <div class="chart-bars">
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:42%">
+                            </div>
+
+                            <span>
+                                Apr
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:50%">
+                            </div>
+
+                            <span>
+                                May
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:58%">
+                            </div>
+
+                            <span>
+                                Jun
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:64%">
+                            </div>
+
+                            <span>
+                                Jul
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:72%">
+                            </div>
+
+                            <span>
+                                Aug
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar"
+                                 style="height:82%">
+                            </div>
+
+                            <span>
+                                Sep
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-column">
+
+                            <div class="chart-bar active"
+                                 style="height:91%">
+                            </div>
+
+                            <span>
+                                Oct
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+                <span>
+                    <i class="legend-dot purple-dot"></i>
+                    Users
+                </span>
+
+                <span>
+                    <i class="legend-dot cyan-dot"></i>
+                    Trips
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUICK OVERVIEW -->
+
+        <div class="panel overview-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        SYSTEM STATUS
+                    </span>
+
+                    <h2>
+                        Platform Health
+                    </h2>
+
+                </div>
+
+                <span class="status-online">
+                    ● Online
+                </span>
+
+            </div>
+
+
+            <div class="health-circle">
+
+                <div>
+
+                    <strong>
+                        98%
+                    </strong>
+
+                    <span>
+                        Healthy
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-list">
+
+
+                <div class="health-row">
+
+                    <span>
+                        <i class="health-dot green"></i>
+                        Server
+                    </span>
+
+                    <strong>
+                        Operational
+                    </strong>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>
+                        <i class="health-dot green"></i>
+                        Database
+                    </span>
+
+                    <strong>
+                        Operational
+                    </strong>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>
+                        <i class="health-dot green"></i>
+                        API
+                    </span>
+
+                    <strong>
+                        Operational
+                    </strong>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>
+                        <i class="health-dot yellow"></i>
+                        Storage
+                    </span>
+
+                    <strong>
+                        72% Used
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LOWER GRID
+    ================================================= -->
+
+    <section class="lower-grid">
+
+
+        <!-- RECENT USERS -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        USERS
+                    </span>
+
+                    <h2>
+                        Recent Users
+                    </h2>
+
+                </div>
+
+                <button class="view-btn">
+                    View All →
+                </button>
+
+            </div>
+
+
+            <div class="user-list">
+
+
+                <div class="user-row">
+
+                    <div class="user-avatar avatar-one">
+                        A
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong>
+                            Aarav Shah
+                        </strong>
+
+                        <span>
+                            aarav@example.com
+                        </span>
+
+                    </div>
+
+                    <span class="user-status active-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-avatar avatar-two">
+                        P
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong>
+                            Priya Patel
+                        </strong>
+
+                        <span>
+                            priya@example.com
+                        </span>
+
+                    </div>
+
+                    <span class="user-status active-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-avatar avatar-three">
+                        R
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong>
+                            Rahul Mehta
+                        </strong>
+
+                        <span>
+                            rahul@example.com
+                        </span>
+
+                    </div>
+
+                    <span class="user-status inactive-status">
+                        Inactive
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-avatar avatar-four">
+                        S
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong>
+                            Sneha Joshi
+                        </strong>
+
+                        <span>
+                            sneha@example.com
+                        </span>
+
+                    </div>
+
+                    <span class="user-status active-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-avatar avatar-five">
+                        K
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong>
+                            Karan Patel
+                        </strong>
+
+                        <span>
+                            karan@example.com
+                        </span>
+
+                    </div>
+
+                    <span class="user-status active-status">
+                        Active
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RECENT TRIPS -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        TRIPS
+                    </span>
+
+                    <h2>
+                        Recent Trips
+                    </h2>
+
+                </div>
+
+                <button class="view-btn">
+                    View All →
+                </button>
+
+            </div>
+
+
+            <div class="trip-list">
+
+
+                <div class="trip-row">
+
+                    <div class="trip-icon">
+                        🏝️
+                    </div>
+
+                    <div class="trip-details">
+
+                        <strong>
+                            Goa Beach Escape
+                        </strong>
+
+                        <span>
+                            15 Oct 2026 • Nikhil
+                        </span>
+
+                    </div>
+
+                    <span class="trip-status upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <div class="trip-row">
+
+                    <div class="trip-icon">
+                        🏔️
+                    </div>
+
+                    <div class="trip-details">
+
+                        <strong>
+                            Manali Adventure
+                        </strong>
+
+                        <span>
+                            02 Nov 2026 • Priya
+                        </span>
+
+                    </div>
+
+                    <span class="trip-status upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <div class="trip-row">
+
+                    <div class="trip-icon">
+                        🏰
+                    </div>
+
+                    <div class="trip-details">
+
+                        <strong>
+                            Rajasthan Heritage
+                        </strong>
+
+                        <span>
+                            10 Aug 2026 • Rahul
+                        </span>
+
+                    </div>
+
+                    <span class="trip-status completed">
+                        Completed
+                    </span>
+
+                </div>
+
+
+                <div class="trip-row">
+
+                    <div class="trip-icon">
+                        🌴
+                    </div>
+
+                    <div class="trip-details">
+
+                        <strong>
+                            Kerala Backwaters
+                        </strong>
+
+                        <span>
+                            22 Oct 2026 • Sneha
+                        </span>
+
+                    </div>
+
+                    <span class="trip-status upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+    ================================================= -->
+
+    <section class="panel quick-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-label">
+                    ADMIN TOOLS
+                </span>
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <button onclick="showMessage('Add Destination')">
+
+                <span class="quick-icon purple-bg">
+                    +
+                </span>
+
+                <div>
+                    <strong>Add Destination</strong>
+                    <span>Create a new destination</span>
+                </div>
+
+            </button>
+
+
+            <button onclick="showMessage('Manage Users')">
+
+                <span class="quick-icon blue-bg">
+                    ♙
+                </span>
+
+                <div>
+                    <strong>Manage Users</strong>
+                    <span>View and manage users</span>
+                </div>
+
+            </button>
+
+
+            <button onclick="showMessage('Generate Report')">
+
+                <span class="quick-icon green-bg">
+                    ▥
+                </span>
+
+                <div>
+                    <strong>Generate Report</strong>
+                    <span>Create platform report</span>
+                </div>
+
+            </button>
+
+
+            <button onclick="showMessage('System Settings')">
+
+                <span class="quick-icon yellow-bg">
+                    ⚙
+                </span>
+
+                <div>
+                    <strong>System Settings</strong>
+                    <span>Configure TravelMate</span>
+                </div>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ACTIVITY
+    ================================================= -->
+
+    <section class="panel activity-panel"
+             id="activity">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-label">
+                    LIVE ACTIVITY
+                </span>
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+            </div>
+
+            <span class="live-indicator">
+                ● Live
+            </span>
+
+        </div>
+
+
+        <div class="activity-list">
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon user-activity">
+                    ♙
+                </div>
+
+                <div class="activity-content">
+
+                    <strong>
+                        New user registered
+                    </strong>
+
+                    <span>
+                        Aarav Shah joined TravelMate
+                    </span>
+
+                </div>
+
+                <time>
+                    5 min ago
+                </time>
+
+            </div>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon trip-activity">
+                    🧳
+                </div>
+
+                <div class="activity-content">
+
+                    <strong>
+                        New trip created
+                    </strong>
+
+                    <span>
+                        Goa Beach Escape was created
+                    </span>
+
+                </div>
+
+                <time>
+                    18 min ago
+                </time>
+
+            </div>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon expense-activity">
+                    ₹
+                </div>
+
+                <div class="activity-content">
+
+                    <strong>
+                        Expense recorded
+                    </strong>
+
+                    <span>
+                        ₹1,850 expense added to Goa trip
+                    </span>
+
+                </div>
+
+                <time>
+                    32 min ago
+                </time>
+
+            </div>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon destination-activity">
+                    ◉
+                </div>
+
+                <div class="activity-content">
+
+                    <strong>
+                        Destination updated
+                    </strong>
+
+                    <span>
+                        Goa destination information updated
+                    </span>
+
+                </div>
+
+                <time>
+                    1 hr ago
+                </time>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div class="toast"
+     id="toast">
+
+    <span>✓</span>
+
+    <div>
+        <strong>Action completed</strong>
+        <small id="toastMessage">
+            Done
+        </small>
+    </div>
+
+</div>
+
+
+
+<script>
+
+function showMessage(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    const text =
+        document.getElementById("toastMessage");
+
+    text.textContent =
+        message + " selected";
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+</script>
+
+
+</body>
+
+</html>

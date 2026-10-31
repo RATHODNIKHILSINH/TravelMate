@@ -1,0 +1,605 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const messages = document.querySelectorAll(".django-message");
+
+    messages.forEach(function (message) {
+
+        // Automatically hide after 4 seconds
+        setTimeout(function () {
+            message.style.opacity = "0";
+            message.style.transform = "translateY(-10px)";
+
+            setTimeout(function () {
+                message.remove();
+            }, 400);
+
+        }, 4000);
+
+    });
+
+});
+</script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TravelMate - Login</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'login.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ==================================================
+         LEFT VISUAL PANEL
+    =================================================== -->
+
+    <section class="visual-panel">
+
+        <div class="visual-overlay"></div>
+
+
+        <div class="visual-content">
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✈
+                </div>
+
+                <div>
+
+                    <strong>
+                        TravelMate
+                    </strong>
+
+                    <span>
+                        Travel Planner
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO -->
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    WELCOME BACK
+                </span>
+
+
+                <h1>
+                    Your journey<br>
+                    <span>continues here.</span>
+                </h1>
+
+
+                <p>
+                    Sign in to continue planning your trips,
+                    managing itineraries, tracking expenses
+                    and discovering new destinations.
+                </p>
+
+
+                <!-- FEATURES -->
+
+                <div class="features">
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🗺
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Plan your adventures
+                            </strong>
+
+                            <span>
+                                Organize every trip in one place
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            💰
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Manage your budget
+                            </strong>
+
+                            <span>
+                                Track your travel expenses easily
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ❤️
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Save your favorites
+                            </strong>
+
+                            <span>
+                                Keep your favorite destinations
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="visual-footer">
+
+                <span>
+                    © 2026 TravelMate
+                </span>
+
+                <span>
+                    Plan • Explore • Experience
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ANIMATED GLOW -->
+
+        <div class="glow glow-one"></div>
+
+        <div class="glow glow-two"></div>
+
+        <div class="glow glow-three"></div>
+
+
+        <!-- FLOATING DESTINATIONS -->
+
+        <div class="floating-card card-one">
+            📍 Goa
+        </div>
+
+        <div class="floating-card card-three">
+            🏰 Jaipur
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         LOGIN PANEL
+    =================================================== -->
+
+    <main class="login-panel">
+
+        <div class="login-container">
+
+
+            <!-- MOBILE LOGO -->
+
+            <div class="mobile-logo">
+
+                <div class="brand-icon">
+                    ✈
+                </div>
+
+                <strong>
+                    TravelMate
+                </strong>
+
+            </div>
+
+
+
+            <!-- HEADER -->
+
+            <div class="login-header">
+
+                <span class="small-label">
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    Sign in to TravelMate
+                </h2>
+
+                <p>
+                    Continue your journey and manage your trips.
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 DJANGO MESSAGES
+            =================================================== -->
+
+            {% if messages %}
+
+                <div class="django-messages">
+
+                    {% for message in messages %}
+
+                        <div class="django-message {{ message.tags }}">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+
+
+            <div class="divider">
+
+                <span></span>
+
+                <p>
+                    OR CONTINUE WITH USERNAME
+                </p>
+
+                <span></span>
+
+            </div>
+
+
+
+            <form
+                id="loginForm"
+                method="POST"
+                action="{% url 'login' %}"
+            >
+
+                {% csrf_token %}
+
+
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            @
+                        </span>
+
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+
+                    <div class="password-label">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <a
+                            href="#"
+                            onclick="forgotPassword(event)"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ◈
+                        </span>
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword()"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- REMEMBER ME -->
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        name="remember"
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span>
+                        Remember me
+                    </span>
+
+                </label>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+
+                    <span>
+                        Sign In
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- ==================================================
+                 REGISTER
+            =================================================== -->
+
+            <div class="register-link">
+
+                Don't have an account?
+
+                <a href="{% url 'register' %}">
+                    Create account
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SECURITY
+            =================================================== -->
+
+            <div class="secure-login">
+
+                <span>
+                    🔒
+                </span>
+
+                <span>
+                    Secure TravelMate Login
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     TOAST
+================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+
+    <div class="toast-icon">
+        ✓
+    </div>
+
+
+    <div>
+
+        <strong id="toastTitle">
+            Login
+        </strong>
+
+        <span id="toastText">
+            Welcome back!
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+/* =====================================================
+   PASSWORD TOGGLE
+===================================================== */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.querySelector(".password-toggle");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        button.textContent = "🙈";
+
+    } else {
+
+        password.type = "password";
+
+        button.textContent = "👁";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+    showToast(
+        "Password Reset",
+        "Password reset option selected."
+    );
+
+}
+
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(title, text) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    document.getElementById("toastTitle")
+        .textContent = title;
+
+
+    document.getElementById("toastText")
+        .textContent = text;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(function () {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

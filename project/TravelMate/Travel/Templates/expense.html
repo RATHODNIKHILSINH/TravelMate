@@ -1,0 +1,910 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Expense Tracker</title>
+
+    <link rel="stylesheet" href="{% static 'expense.css' %}">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">✈</div>
+
+        <div>
+            <h2>TravelMate</h2>
+            <span>Travel Planner</span>
+        </div>
+    </div>
+
+    <div class="menu-title">MAIN MENU</div>
+
+    <nav>
+
+        <a href="{% url 'home' %}" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{% url 'destinations' %}" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Destinations</span>
+        </a>
+
+        <a href="{% url 'my_trips' %}" class="nav-item">
+            <span class="nav-icon">🧳</span>
+            <span>My Trips</span>
+        </a>
+
+        <a href="{% url 'itinerary' %}" class="nav-item">
+            <span class="nav-icon">☷</span>
+            <span>Itinerary</span>
+        </a>
+
+        <a href="{% url 'favorites' %}" class="nav-item">
+            <span class="nav-icon">♡</span>
+            <span>Favorites</span>
+        </a>
+
+        <a href="{% url 'reports' %}" class="nav-item">
+            <span class="nav-icon">▥</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="{% url 'budget' %}" class="nav-item">
+            <span class="nav-icon">₹</span>
+            <span>Budget Planner</span>
+        </a>
+
+        <a href="{% url 'expense' %}" class="nav-item active">
+            <span class="nav-icon">💸</span>
+            <span>Expenses</span>
+        </a>
+
+    </nav>
+
+    <div class="menu-title account-title">ACCOUNT</div>
+
+    <nav>
+
+        <a href="{% url 'settings' %}" class="nav-item">
+            <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⇥</span>
+            <span>Logout</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="mini-profile">
+            <div class="profile-avatar">N</div>
+
+            <div>
+                <strong>Nikhil</strong>
+                <span>Traveler</span>
+            </div>
+
+            <span class="more">•••</span>
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+            <div class="breadcrumb">
+                TravelMate <span>/</span> Expenses
+            </div>
+
+            <h1>Expense Tracker</h1>
+
+            <p>
+                Track your spending and stay within your travel budget.
+            </p>
+        </div>
+
+        <div class="header-right">
+
+            <button class="icon-button">
+                🔔
+                <span class="notification-dot"></span>
+            </button>
+
+            <div class="header-profile">
+                <div class="profile-avatar">N</div>
+
+                <div>
+                    <strong>Nikhil Rathod</strong>
+                    <span>Traveler</span>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= TOP ACTIONS ================= -->
+
+    <section class="expense-actions">
+
+        <div class="trip-selector">
+
+            <span class="selector-label">CURRENT TRIP</span>
+
+            <select>
+                <option>Goa Beach Escape</option>
+                <option>Manali Adventure</option>
+                <option>Rajasthan Heritage Tour</option>
+            </select>
+
+        </div>
+
+        <button class="add-expense-btn" onclick="openExpenseModal()">
+            <span>＋</span>
+            Add Expense
+        </button>
+
+    </section>
+
+
+    <!-- ================= SUMMARY CARDS ================= -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card total-card">
+
+            <div class="card-top">
+                <span class="card-label">TOTAL SPENT</span>
+                <div class="summary-icon purple">₹</div>
+            </div>
+
+            <h2>₹18,500</h2>
+
+            <div class="card-bottom">
+                <span class="positive">↑ 8.4%</span>
+                <span>vs last trip</span>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="card-top">
+                <span class="card-label">TRIP BUDGET</span>
+                <div class="summary-icon blue">◈</div>
+            </div>
+
+            <h2>₹25,000</h2>
+
+            <div class="budget-line">
+                <div class="budget-track">
+                    <div class="budget-progress"></div>
+                </div>
+
+                <span>74%</span>
+            </div>
+
+            <small>₹6,500 remaining</small>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="card-top">
+                <span class="card-label">DAILY AVERAGE</span>
+                <div class="summary-icon cyan">↗</div>
+            </div>
+
+            <h2>₹3,700</h2>
+
+            <div class="card-bottom">
+                <span class="warning">↑ 4.2%</span>
+                <span>this trip</span>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="card-top">
+                <span class="card-label">TRANSACTIONS</span>
+                <div class="summary-icon green">✓</div>
+            </div>
+
+            <h2>24</h2>
+
+            <div class="card-bottom">
+                <span class="positive">+6</span>
+                <span>this month</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ANALYTICS ================= -->
+
+    <section class="analytics-grid">
+
+        <!-- SPENDING CHART -->
+
+        <div class="panel chart-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="panel-kicker">SPENDING ANALYTICS</span>
+                    <h2>Expense Overview</h2>
+                </div>
+
+                <select class="small-select">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                    <option>This Month</option>
+                </select>
+
+            </div>
+
+
+            <div class="chart-area">
+
+                <div class="chart-y-axis">
+                    <span>₹6k</span>
+                    <span>₹4k</span>
+                    <span>₹2k</span>
+                    <span>₹0</span>
+                </div>
+
+                <div class="chart">
+
+                    <div class="grid-line line-1"></div>
+                    <div class="grid-line line-2"></div>
+                    <div class="grid-line line-3"></div>
+                    <div class="grid-line line-4"></div>
+
+                    <div class="bars">
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:42%"></div>
+                            <span>Mon</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:64%"></div>
+                            <span>Tue</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:35%"></div>
+                            <span>Wed</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar active-bar" style="height:82%"></div>
+                            <span>Thu</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:55%"></div>
+                            <span>Fri</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:72%"></div>
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar" style="height:47%"></div>
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORY BREAKDOWN -->
+
+        <div class="panel category-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="panel-kicker">BREAKDOWN</span>
+                    <h2>By Category</h2>
+                </div>
+
+                <button class="dots-btn">•••</button>
+
+            </div>
+
+
+            <div class="donut-wrapper">
+
+                <div class="donut-chart">
+
+                    <div class="donut-center">
+                        <strong>₹18.5K</strong>
+                        <span>Total</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="category-list">
+
+                <div class="category-row">
+                    <div class="category-name">
+                        <i class="category-dot food"></i>
+                        Food
+                    </div>
+                    <strong>₹5,920</strong>
+                    <span>32%</span>
+                </div>
+
+                <div class="category-row">
+                    <div class="category-name">
+                        <i class="category-dot hotel"></i>
+                        Hotel
+                    </div>
+                    <strong>₹4,810</strong>
+                    <span>26%</span>
+                </div>
+
+                <div class="category-row">
+                    <div class="category-name">
+                        <i class="category-dot travel"></i>
+                        Transport
+                    </div>
+                    <strong>₹3,700</strong>
+                    <span>20%</span>
+                </div>
+
+                <div class="category-row">
+                    <div class="category-name">
+                        <i class="category-dot activity"></i>
+                        Activities
+                    </div>
+                    <strong>₹2,770</strong>
+                    <span>15%</span>
+                </div>
+
+                <div class="category-row">
+                    <div class="category-name">
+                        <i class="category-dot other"></i>
+                        Other
+                    </div>
+                    <strong>₹1,300</strong>
+                    <span>7%</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECENT EXPENSES ================= -->
+
+    <section class="panel transactions-panel">
+
+        <div class="panel-header transaction-header">
+
+            <div>
+                <span class="panel-kicker">TRANSACTIONS</span>
+                <h2>Recent Expenses</h2>
+            </div>
+
+            <div class="transaction-tools">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="expenseSearch"
+                        placeholder="Search expense..."
+                        onkeyup="searchExpenses()"
+                    >
+                </div>
+
+                <select class="filter-select" onchange="filterExpenses(this.value)">
+                    <option value="all">All Categories</option>
+                    <option value="food">Food</option>
+                    <option value="hotel">Hotel</option>
+                    <option value="transport">Transport</option>
+                    <option value="activity">Activities</option>
+                    <option value="other">Other</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>EXPENSE</th>
+                        <th>CATEGORY</th>
+                        <th>DATE</th>
+                        <th>PAYMENT</th>
+                        <th>AMOUNT</th>
+                        <th>ACTION</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="expenseTable">
+
+                    <tr data-category="food">
+
+                        <td>
+                            <div class="expense-info">
+                                <div class="expense-icon food-icon">🍽</div>
+
+                                <div>
+                                    <strong>Beachside Restaurant</strong>
+                                    <span>Dinner & drinks</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="category-tag food-tag">
+                                Food
+                            </span>
+                        </td>
+
+                        <td>28 Sep 2026</td>
+
+                        <td>
+                            <span class="payment">
+                                💳 UPI
+                            </span>
+                        </td>
+
+                        <td class="amount">₹1,850</td>
+
+                        <td>
+                            <button class="row-action">•••</button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr data-category="hotel">
+
+                        <td>
+                            <div class="expense-info">
+                                <div class="expense-icon hotel-icon">🏨</div>
+
+                                <div>
+                                    <strong>Ocean View Hotel</strong>
+                                    <span>Room booking</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="category-tag hotel-tag">
+                                Hotel
+                            </span>
+                        </td>
+
+                        <td>27 Sep 2026</td>
+
+                        <td>
+                            <span class="payment">
+                                💳 Card
+                            </span>
+                        </td>
+
+                        <td class="amount">₹4,200</td>
+
+                        <td>
+                            <button class="row-action">•••</button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr data-category="transport">
+
+                        <td>
+                            <div class="expense-info">
+                                <div class="expense-icon transport-icon">🚕</div>
+
+                                <div>
+                                    <strong>Airport Taxi</strong>
+                                    <span>Airport → Hotel</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="category-tag transport-tag">
+                                Transport
+                            </span>
+                        </td>
+
+                        <td>26 Sep 2026</td>
+
+                        <td>
+                            <span class="payment">
+                                💵 Cash
+                            </span>
+                        </td>
+
+                        <td class="amount">₹850</td>
+
+                        <td>
+                            <button class="row-action">•••</button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr data-category="activity">
+
+                        <td>
+                            <div class="expense-info">
+                                <div class="expense-icon activity-icon">🏄</div>
+
+                                <div>
+                                    <strong>Water Sports</strong>
+                                    <span>Parasailing</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="category-tag activity-tag">
+                                Activities
+                            </span>
+                        </td>
+
+                        <td>26 Sep 2026</td>
+
+                        <td>
+                            <span class="payment">
+                                💳 UPI
+                            </span>
+                        </td>
+
+                        <td class="amount">₹2,400</td>
+
+                        <td>
+                            <button class="row-action">•••</button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr data-category="food">
+
+                        <td>
+                            <div class="expense-info">
+                                <div class="expense-icon food-icon">☕</div>
+
+                                <div>
+                                    <strong>Cafe Coffee</strong>
+                                    <span>Breakfast</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="category-tag food-tag">
+                                Food
+                            </span>
+                        </td>
+
+                        <td>25 Sep 2026</td>
+
+                        <td>
+                            <span class="payment">
+                                💵 Cash
+                            </span>
+                        </td>
+
+                        <td class="amount">₹620</td>
+
+                        <td>
+                            <button class="row-action">•••</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="table-footer">
+
+            <span>Showing 5 of 24 transactions</span>
+
+            <div class="pagination">
+                <button>‹</button>
+                <button class="page-active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button>›</button>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= ADD EXPENSE MODAL ================= -->
+
+<div class="modal-overlay" id="expenseModal">
+
+    <div class="expense-modal">
+
+        <button class="close-modal" onclick="closeExpenseModal()">×</button>
+
+        <div class="modal-icon">
+            💸
+        </div>
+
+        <span class="panel-kicker">NEW TRANSACTION</span>
+
+        <h2>Add Expense</h2>
+
+        <p class="modal-description">
+            Record a new expense for your current trip.
+        </p>
+
+
+        <form onsubmit="saveExpense(event)">
+
+            <div class="form-grid">
+
+                <div class="form-group full">
+                    <label>Expense Name</label>
+
+                    <input
+                        type="text"
+                        placeholder="e.g. Restaurant, Taxi, Hotel..."
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Amount</label>
+
+                    <div class="amount-input">
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            placeholder="0.00"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <select required>
+                        <option value="">Select category</option>
+                        <option>Food</option>
+                        <option>Hotel</option>
+                        <option>Transport</option>
+                        <option>Activities</option>
+                        <option>Shopping</option>
+                        <option>Other</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Date</label>
+
+                    <input
+                        type="date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Payment Method</label>
+
+                    <select>
+
+                        <option>UPI</option>
+                        <option>Credit Card</option>
+                        <option>Debit Card</option>
+                        <option>Cash</option>
+                        <option>Net Banking</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Notes</label>
+
+                    <textarea
+                        rows="3"
+                        placeholder="Add a note about this expense..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeExpenseModal()"
+                >
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    Save Expense
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openExpenseModal() {
+    document.getElementById("expenseModal").classList.add("show");
+    document.body.classList.add("modal-open");
+}
+
+
+function closeExpenseModal() {
+    document.getElementById("expenseModal").classList.remove("show");
+    document.body.classList.remove("modal-open");
+}
+
+
+function saveExpense(event) {
+
+    event.preventDefault();
+
+    alert("Expense added successfully!");
+
+    closeExpenseModal();
+
+    event.target.reset();
+}
+
+
+function searchExpenses() {
+
+    const input =
+        document.getElementById("expenseSearch")
+        .value
+        .toLowerCase();
+
+    const rows =
+        document.querySelectorAll("#expenseTable tr");
+
+    rows.forEach(row => {
+
+        const text =
+            row.innerText.toLowerCase();
+
+        row.style.display =
+            text.includes(input) ? "" : "none";
+
+    });
+
+}
+
+
+function filterExpenses(category) {
+
+    const rows =
+        document.querySelectorAll("#expenseTable tr");
+
+    rows.forEach(row => {
+
+        if (category === "all") {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display =
+                row.dataset.category === category
+                ? ""
+                : "none";
+
+        }
+
+    });
+
+}
+
+
+document
+    .getElementById("expenseModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeExpenseModal();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Logout | TravelMate</title>
+
+    <link rel="stylesheet" href="{% static 'logout.css' %}">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+    </div>
+
+    <main class="logout-container">
+
+        <div class="logout-card">
+
+            <div class="logo">
+                <div class="logo-icon">✈</div>
+                <span>TravelMate</span>
+            </div>
+
+            <div class="logout-icon">
+                <span>↪</span>
+            </div>
+
+            <h1>Ready to leave?</h1>
+
+            <p class="subtitle">
+                Are you sure you want to logout from your TravelMate account?
+            </p>
+
+            <div class="user-info">
+                <div class="avatar">
+                    {{ user.first_name|default:user.username|first|upper }}
+                </div>
+
+                <div>
+                    <strong>
+                        {{ user.first_name|default:user.username }}
+                    </strong>
+
+                    <span>
+                        {{ user.email }}
+                    </span>
+                </div>
+            </div>
+
+            <form method="POST" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+
+                <button type="submit" class="logout-btn">
+                    <span>Logout</span>
+                    <span class="arrow">→</span>
+                </button>
+            </form>
+
+            <a href="/" class="cancel-btn">
+                Cancel & Stay Logged In
+            </a>
+
+            <div class="security-note">
+                <span>🔒</span>
+                <span>Your account is protected by secure authentication.</span>
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 TravelMate · Plan smarter. Travel better.
+        </p>
+
+    </main>
+
+</body>
+</html>

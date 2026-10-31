@@ -1,0 +1,1056 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Destinations</title>
+
+    <!-- TravelMate CSS -->
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
+
+            <span>TravelMate</span>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="{% url 'destinations' %}" class="nav-item active">
+                <i class="fa-solid fa-compass"></i>
+                <span>Destinations</span>
+            </a>
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+                <i class="fa-regular fa-calendar"></i>
+                <span>My Trips</span>
+            </a>
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+                <i class="fa-regular fa-heart"></i>
+                <span>Favorites</span>
+            </a>
+
+            <a href="{% url 'expense' %}" class="nav-item">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Expenses</span>
+            </a>
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Itinerary</span>
+            </a>
+
+            <a href="{% url 'reports' %}" class="nav-item">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="{% url 'settings' %}" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="{% url 'help_support' %}" class="nav-item">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Help</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="brand-mobile">
+                <i class="fa-solid fa-paper-plane"></i>
+                TravelMate
+            </div>
+
+
+            <div class="header-actions">
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="profile">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        alt="Profile">
+
+                    <div class="profile-info">
+
+                        <strong>Nikhil</strong>
+
+                        <small>Traveler</small>
+
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="page-header">
+
+            <div class="title-section">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+
+                    <div class="breadcrumb">
+                        TravelMate / Explore
+                    </div>
+
+                    <h1>Explore Destinations</h1>
+
+                    <p>
+                        Discover amazing places around the world
+                        and get travel inspiration.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button class="create-trip" id="planTripButton">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Plan a Trip
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="search-area">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search destinations, places, activities...">
+
+                <button
+                    class="clear-search"
+                    id="clearSearch">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="filter-button"
+                id="filterButton">
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>Filters</span>
+
+                <span
+                    class="filter-count"
+                    id="filterCount">0</span>
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= FILTER PANEL ================= -->
+
+        <div
+            class="filter-panel"
+            id="filterPanel">
+
+            <div class="filter-header">
+
+                <h3>Filter Destinations</h3>
+
+                <button id="closeFilter">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="filter-content">
+
+                <div class="filter-group">
+
+                    <label>Destination Type</label>
+
+                    <div class="filter-options">
+
+                        <button
+                            class="filter-option active"
+                            data-category="all">
+                            All
+                        </button>
+
+                        <button
+                            class="filter-option"
+                            data-category="beach">
+                            🏝️ Beach
+                        </button>
+
+                        <button
+                            class="filter-option"
+                            data-category="mountain">
+                            🏔️ Mountain
+                        </button>
+
+                        <button
+                            class="filter-option"
+                            data-category="city">
+                            🏙️ City
+                        </button>
+
+                        <button
+                            class="filter-option"
+                            data-category="culture">
+                            🏛️ Culture
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label>Minimum Rating</label>
+
+                    <select id="ratingFilter">
+
+                        <option value="0">
+                            Any rating
+                        </option>
+
+                        <option value="4">
+                            4.0+
+                        </option>
+
+                        <option value="4.5">
+                            4.5+
+                        </option>
+
+                        <option value="4.8">
+                            4.8+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="apply-filter"
+                id="applyFilter">
+
+                Apply Filters
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= DESTINATION TOOLBAR ================= -->
+
+        <section class="destination-toolbar">
+
+            <div>
+
+                <h2>Popular Destinations</h2>
+
+                <p>
+                    Explore places loved by travelers
+                </p>
+
+            </div>
+
+
+            <div class="toolbar-actions">
+
+                <select id="sortSelect">
+
+                    <option value="popular">
+                        Most Popular
+                    </option>
+
+                    <option value="rating">
+                        Highest Rated
+                    </option>
+
+                    <option value="name">
+                        Name A-Z
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="view-all"
+                    id="viewAll">
+
+                    View all
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DESTINATION GRID ================= -->
+
+        <section
+            class="destination-grid"
+            id="destinationGrid">
+
+
+            <!-- ================= BALI ================= -->
+
+            <article
+                class="destination-card"
+                data-name="Bali"
+                data-category="beach"
+                data-rating="4.8"
+                data-destination="bali">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85"
+                        alt="Bali Indonesia">
+
+                    <div class="image-overlay"></div>
+
+                    <span class="destination-badge">
+                        Popular
+                    </span>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Indonesia
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Bali</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.8
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        Indonesia
+                    </p>
+
+
+                    <p class="description">
+
+                        Tropical beaches, beautiful temples,
+                        rice terraces and unforgettable sunsets.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            12.4k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================= SWISS ALPS ================= -->
+
+            <article
+                class="destination-card"
+                data-name="Swiss Alps"
+                data-category="mountain"
+                data-rating="4.7"
+                data-destination="swiss-alps">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=85"
+                        alt="Swiss Alps">
+
+                    <div class="image-overlay"></div>
+
+                    <span class="destination-badge">
+                        Trending
+                    </span>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Switzerland
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Swiss Alps</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.7
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        Switzerland
+                    </p>
+
+
+                    <p class="description">
+
+                        Snow-covered peaks, peaceful villages
+                        and breathtaking mountain landscapes.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            9.8k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================= SANTORINI ================= -->
+
+            <article
+                class="destination-card"
+                data-name="Santorini"
+                data-category="beach"
+                data-rating="4.6"
+                data-destination="santorini">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=85"
+                        alt="Santorini Greece">
+
+                    <div class="image-overlay"></div>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Greece
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Santorini</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.6
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        Greece
+                    </p>
+
+
+                    <p class="description">
+
+                        Whitewashed buildings, blue domes,
+                        coastal views and romantic sunsets.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            8.7k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================= PARIS ================= -->
+
+            <article
+                class="destination-card"
+                data-name="Paris"
+                data-category="city"
+                data-rating="4.7"
+                data-destination="paris">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85"
+                        alt="Paris France">
+
+                    <div class="image-overlay"></div>
+
+                    <span class="destination-badge">
+                        Top Rated
+                    </span>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        France
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Paris</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.7
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        France
+                    </p>
+
+
+                    <p class="description">
+
+                        Iconic architecture, world-famous cuisine,
+                        museums and unforgettable city experiences.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            15.2k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================= TOKYO ================= -->
+
+            <article
+                class="destination-card extra-card"
+                data-name="Tokyo"
+                data-category="city culture"
+                data-rating="4.9"
+                data-destination="tokyo">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=85"
+                        alt="Tokyo Japan">
+
+                    <div class="image-overlay"></div>
+
+                    <span class="destination-badge">
+                        Top Rated
+                    </span>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Japan
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Tokyo</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.9
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        Japan
+                    </p>
+
+
+                    <p class="description">
+
+                        A futuristic city filled with technology,
+                        culture, food and traditional experiences.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            18.6k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================= DUBAI ================= -->
+
+            <article
+                class="destination-card extra-card"
+                data-name="Dubai"
+                data-category="city"
+                data-rating="4.6"
+                data-destination="dubai">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=85"
+                        alt="Dubai">
+
+                    <div class="image-overlay"></div>
+
+                    <button class="favorite">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="card-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        UAE
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <div class="card-title-row">
+
+                        <h3>Dubai</h3>
+
+                        <span class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.6
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="country">
+                        United Arab Emirates
+                    </p>
+
+
+                    <p class="description">
+
+                        Luxury experiences, futuristic architecture,
+                        shopping and desert adventures.
+
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+
+                            <i class="fa-solid fa-users"></i>
+
+                            13.1k travelers
+
+                        </span>
+
+
+                        <button class="explore-btn">
+
+                            Explore
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ================= EMPTY STATE ================= -->
+
+        <div
+            class="empty-state"
+            id="emptyState">
+
+            <div class="empty-icon">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+            </div>
+
+            <h3>No destinations found</h3>
+
+            <p>
+                Try another destination or change your filters.
+            </p>
+
+            <button id="resetSearch">
+                Reset Filters
+            </button>
+
+        </div>
+
+
+        <!-- ================= EXPLORE MORE ================= -->
+
+        <section class="explore-banner">
+
+            <div class="banner-content">
+
+                <div class="banner-icon">
+
+                    <i class="fa-solid fa-earth-americas"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Ready for your next adventure?
+                    </h2>
+
+                    <p>
+                        Explore hundreds of destinations
+                        and start planning your dream trip.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button id="exploreMore">
+
+                Explore More Destinations
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                © 2026 TravelMate. Plan smarter. Travel better.
+            </p>
+
+            <div>
+
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Help</a>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span>
+        Destination added to favorites
+    </span>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="{% static 'home.js' %}" defer></script>
+
+</body>
+</html>

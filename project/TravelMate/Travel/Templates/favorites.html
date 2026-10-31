@@ -1,0 +1,515 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favorites | TravelMate</title>
+
+    <link rel="stylesheet" href="{% static 'favorites.css' %}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✈</div>
+
+            <div>
+                <h2>TravelMate</h2>
+                <span>Travel Smarter</span>
+            </div>
+        </div>
+
+
+        <nav class="navigation">
+
+            <div class="nav-title">
+                MAIN
+            </div>
+
+            <a href="{% url 'home' %}" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+                <span class="nav-icon">🧳</span>
+                <span>My Trips</span>
+            </a>
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span>Itinerary</span>
+            </a>
+
+            <a href="{% url 'favorites' %}" class="nav-item active">
+                <span class="nav-icon">♥</span>
+                <span>Favorites</span>
+            </a>
+
+
+            <div class="nav-title second">
+                MANAGEMENT
+            </div>
+
+            <a href="{% url 'budget' %}" class="nav-item">
+                <span class="nav-icon">💰</span>
+                <span>Budget Planner</span>
+            </a>
+
+            <a href="{% url 'expense' %}" class="nav-item">
+                <span class="nav-icon">💸</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+                <span class="nav-icon">📍</span>
+                <span>Destinations</span>
+            </a>
+
+            <a href="{% url 'settings' %}" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="upgrade-card">
+
+                <div class="upgrade-icon">
+                    ✨
+                </div>
+
+                <h3>Plan your next adventure</h3>
+
+                <p>
+                    Discover new destinations and create unforgettable trips.
+                </p>
+
+                <button>
+                    Explore Now
+                </button>
+
+            </div>
+
+
+            <div class="user-mini">
+
+                <div class="avatar">
+                    NR
+                </div>
+
+                <div class="user-info">
+                    <strong>Nikhil</strong>
+                    <span>Traveler</span>
+                </div>
+
+                <button class="more-btn">
+                    ⋮
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <span class="small-label">
+                    YOUR COLLECTION
+                </span>
+
+                <h1>
+                    Favorites
+                    <span>♥</span>
+                </h1>
+
+                <p>
+                    Your saved destinations and places you want to explore.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        NR
+                    </div>
+
+                    <div>
+                        <strong>Nikhil</strong>
+                        <small>Traveler</small>
+                    </div>
+
+                    <span class="arrow">
+                        ▾
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- STATS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ♥
+                    </div>
+
+                    <div>
+                        <span>Saved Places</span>
+                        <strong>{{ favorites|length }}</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon cyan">
+                        📍
+                    </div>
+
+                    <div>
+                        <span>Destinations</span>
+                        <strong>6</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon yellow">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <span>Top Rated</span>
+                        <strong>4.9</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🌎
+                    </div>
+
+                    <div>
+                        <span>Categories</span>
+                        <strong>5</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER BAR -->
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="favoriteSearch"
+                        placeholder="Search your favorites..."
+                    >
+
+                </div>
+
+
+                <div class="filters">
+
+                    <button class="filter active" onclick="filterFavorites('all', this)">
+                        All
+                    </button>
+
+                    <button class="filter" onclick="filterFavorites('Beach', this)">
+                        🏝️ Beach
+                    </button>
+
+                    <button class="filter" onclick="filterFavorites('Mountain', this)">
+                        🏔️ Mountain
+                    </button>
+
+                    <button class="filter" onclick="filterFavorites('Heritage', this)">
+                        🏰 Heritage
+                    </button>
+
+                    <button class="filter" onclick="filterFavorites('Nature', this)">
+                        🌴 Nature
+                    </button>
+
+                    <button class="filter" onclick="filterFavorites('Adventure', this)">
+                        🧗 Adventure
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAVORITES HEADER -->
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Saved Destinations</h2>
+                    <p>Places waiting for your next adventure.</p>
+                </div>
+
+                <span class="result-count">
+                    {{ favorites|length }} places
+                </span>
+
+            </div>
+
+
+            <!-- FAVORITES GRID -->
+
+            <div class="favorites-grid" id="favoritesGrid">
+
+                {% for favorite in favorites %}
+
+                <article
+                    class="favorite-card"
+                    data-category="{{ favorite.category }}"
+                    data-name="{{ favorite.name }}"
+                >
+
+                    <!-- IMAGE -->
+
+                    <div class="card-image">
+
+                        <img
+                            src="{{ favorite.image }}"
+                            alt="{{ favorite.name }}"
+                        >
+
+                        <div class="image-overlay"></div>
+
+                        <span class="category">
+                            {{ favorite.icon }}
+                            {{ favorite.category }}
+                        </span>
+
+
+                        <button
+                            class="heart-btn active"
+                            onclick="removeFavorite(this)"
+                            title="Remove from favorites"
+                        >
+                            ♥
+                        </button>
+
+
+                        <div class="rating">
+                            ⭐ {{ favorite.rating }}
+                        </div>
+
+                    </div>
+
+
+                    <!-- CARD CONTENT -->
+
+                    <div class="card-content">
+
+                        <div class="location">
+                            📍 {{ favorite.location }}
+                        </div>
+
+                        <h3>
+                            {{ favorite.name }}
+                        </h3>
+
+                        <p>
+                            {{ favorite.description }}
+                        </p>
+
+
+                        <div class="card-footer">
+
+                            <button class="view-btn">
+                                Explore
+                                <span>→</span>
+                            </button>
+
+                            <button class="plan-btn">
+                                + Add to Trip
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                {% empty %}
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ♡
+                    </div>
+
+                    <h2>No Favorites Yet</h2>
+
+                    <p>
+                        Start exploring destinations and save the places
+                        you want to visit.
+                    </p>
+
+                    <a href="{% url 'home' %}">
+                        Explore Destinations →
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                © 2026 TravelMate
+            </span>
+
+            <span>
+                Explore • Plan • Travel • Remember
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const searchInput = document.getElementById("favoriteSearch");
+
+searchInput.addEventListener("input", function () {
+
+    const value = this.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".favorite-card");
+
+    cards.forEach(card => {
+
+        const name = card.dataset.name.toLowerCase();
+        const category = card.dataset.category.toLowerCase();
+
+        if (
+            name.includes(value) ||
+            category.includes(value)
+        ) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+function filterFavorites(category, button) {
+
+    document.querySelectorAll(".filter").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const cards = document.querySelectorAll(".favorite-card");
+
+    cards.forEach(card => {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+
+function removeFavorite(button) {
+
+    const card = button.closest(".favorite-card");
+
+    card.classList.add("removing");
+
+    setTimeout(() => {
+        card.remove();
+    }, 400);
+
+}
+
+</script>
+
+</body>
+
+</html>
