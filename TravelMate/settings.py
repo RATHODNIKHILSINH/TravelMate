@@ -151,7 +151,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "localhost",
+     "localhost",
     "127.0.0.1",
     ".vercel.app",
 ]
