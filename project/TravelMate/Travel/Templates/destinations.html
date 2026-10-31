@@ -1,0 +1,737 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Destinations | TravelMate</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'destinations.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ✈
+            </div>
+
+            <div>
+                <h2>TravelMate</h2>
+                <span>Travel Smarter</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <div class="nav-title">
+                MAIN
+            </div>
+
+
+            <a
+                href="{% url 'home' %}"
+                class="nav-item"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="{% url 'my_trips' %}"
+                class="nav-item"
+            >
+                <span class="nav-icon">🧳</span>
+                <span>My Trips</span>
+            </a>
+
+
+            <a
+                href="{% url 'itinerary' %}"
+                class="nav-item"
+            >
+                <span class="nav-icon">📋</span>
+                <span>Itinerary</span>
+            </a>
+
+
+            <a
+                href="{% url 'favorites' %}"
+                class="nav-item"
+            >
+                <span class="nav-icon">♥</span>
+                <span>Favorites</span>
+            </a>
+
+
+            <div class="nav-title second">
+                EXPLORE
+            </div>
+
+
+            <a
+                href="{% url 'destinations' %}"
+                class="nav-item active"
+            >
+                <span class="nav-icon">🌍</span>
+                <span>Destinations</span>
+            </a>
+
+
+            <a href="{% url 'home' %}" class="nav-item">
+                <span class="nav-icon">📍</span>
+                <span>Places to Visit</span>
+            </a>
+
+
+            <div class="nav-title second">
+                MANAGEMENT
+            </div>
+
+
+            <a href="{% url 'budget' %}" class="nav-item">
+                <span class="nav-icon">💰</span>
+                <span>Budget Planner</span>
+            </a>
+
+
+            <a href="{% url 'expense' %}" class="nav-item">
+                <span class="nav-icon">💸</span>
+                <span>Expenses</span>
+            </a>
+
+
+            <a href="{% url 'settings' %}" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="upgrade-card">
+
+                <div class="upgrade-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Plan your next adventure
+                </h3>
+
+                <p>
+                    Discover amazing destinations and
+                    start planning your next journey.
+                </p>
+
+                <button>
+                    Start Planning
+                </button>
+
+            </div>
+
+
+            <div class="user-mini">
+
+                <div class="avatar">
+                    NR
+                </div>
+
+                <div class="user-info">
+
+                    <strong>Nikhil</strong>
+
+                    <span>
+                        Traveler
+                    </span>
+
+                </div>
+
+                <button class="more-btn">
+                    ⋮
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <span class="small-label">
+                    EXPLORE THE WORLD
+                </span>
+
+                <h1>
+                    Destinations
+                    <span>🌍</span>
+                </h1>
+
+                <p>
+                    Discover amazing places and find your next adventure.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        NR
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Nikhil
+                        </strong>
+
+                        <small>
+                            Traveler
+                        </small>
+
+                    </div>
+
+                    <span class="arrow">
+                        ▾
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- HERO -->
+
+            <div class="explore-banner">
+
+                <div class="banner-content">
+
+                    <span>
+                        ✨ TRAVEL • DISCOVER • EXPERIENCE
+                    </span>
+
+                    <h2>
+                        Where will you go next?
+                    </h2>
+
+                    <p>
+                        Explore beautiful destinations,
+                        discover new experiences and
+                        create unforgettable memories.
+                    </p>
+
+                </div>
+
+
+                <div class="banner-globe">
+                    🌎
+                </div>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="search-area">
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="destinationSearch"
+                        placeholder="Search destinations..."
+                    >
+
+                </div>
+
+
+                <button
+                    class="location-btn"
+                    onclick="useLocation()"
+                >
+                    📍 Near Me
+                </button>
+
+            </div>
+
+
+
+            <!-- CATEGORIES -->
+
+            <div class="categories">
+
+                <button
+                    class="category-btn active"
+                    onclick="filterDestinations('all', this)"
+                >
+                    🌎 All
+                </button>
+
+
+                <button
+                    class="category-btn"
+                    onclick="filterDestinations('Beach', this)"
+                >
+                    🏝️ Beach
+                </button>
+
+
+                <button
+                    class="category-btn"
+                    onclick="filterDestinations('Mountain', this)"
+                >
+                    🏔️ Mountain
+                </button>
+
+
+                <button
+                    class="category-btn"
+                    onclick="filterDestinations('Heritage', this)"
+                >
+                    🏰 Heritage
+                </button>
+
+
+                <button
+                    class="category-btn"
+                    onclick="filterDestinations('Nature', this)"
+                >
+                    🌴 Nature
+                </button>
+
+
+                <button
+                    class="category-btn"
+                    onclick="filterDestinations('Adventure', this)"
+                >
+                    🧗 Adventure
+                </button>
+
+            </div>
+
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Popular Destinations
+                    </h2>
+
+                    <p>
+                        Handpicked places for your next trip.
+                    </p>
+
+                </div>
+
+
+                <span class="destination-count">
+                    {{ destinations|length }} destinations
+                </span>
+
+            </div>
+
+
+
+            <!-- DESTINATION GRID -->
+
+            <div
+                class="destination-grid"
+                id="destinationGrid"
+            >
+
+                {% for destination in destinations %}
+
+                <article
+                    class="destination-card"
+                    data-category="{{ destination.category }}"
+                    data-name="{{ destination.name }}"
+                >
+
+
+                    <!-- IMAGE -->
+
+                    <div class="destination-image">
+
+                        <img
+                            src="{{ destination.image }}"
+                            alt="{{ destination.name }}"
+                        >
+
+
+                        <div class="image-overlay"></div>
+
+
+                        <span class="destination-category">
+
+                            {{ destination.icon }}
+
+                            {{ destination.category }}
+
+                        </span>
+
+
+                        <button
+                            class="favorite-button"
+                            onclick="toggleFavorite(this)"
+                        >
+                            ♡
+                        </button>
+
+
+                        <div class="destination-rating">
+
+                            ⭐ {{ destination.rating }}
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DETAILS -->
+
+                    <div class="destination-content">
+
+
+                        <div class="destination-location">
+
+                            📍 {{ destination.location }}
+
+                        </div>
+
+
+                        <h3>
+                            {{ destination.name }}
+                        </h3>
+
+
+                        <p>
+                            {{ destination.description }}
+                        </p>
+
+
+
+                        <!-- INFO -->
+
+                        <div class="destination-info">
+
+                            <div>
+
+                                <span>
+                                    EST. BUDGET
+                                </span>
+
+                                <strong>
+                                    {{ destination.budget }}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    DURATION
+                                </span>
+
+                                <strong>
+                                    {{ destination.duration }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="destination-actions">
+
+                            <button
+                                class="explore-btn"
+                                onclick="exploreDestination('{{ destination.name }}')"
+                            >
+
+                                Explore
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="trip-btn"
+                                onclick="addToTrip('{{ destination.name }}')"
+                            >
+                                + Trip
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                {% empty %}
+
+                <div class="empty-state">
+
+                    <div>
+                        🌍
+                    </div>
+
+                    <h2>
+                        No destinations found
+                    </h2>
+
+                    <p>
+                        Try searching for another destination.
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                © 2026 TravelMate
+            </span>
+
+            <span>
+                Explore • Plan • Travel • Remember
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const searchInput =
+    document.getElementById("destinationSearch");
+
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        const value =
+            this.value.toLowerCase();
+
+        const cards =
+            document.querySelectorAll(
+                ".destination-card"
+            );
+
+
+        cards.forEach(card => {
+
+            const name =
+                card.dataset.name.toLowerCase();
+
+            const category =
+                card.dataset.category.toLowerCase();
+
+
+            if (
+                name.includes(value) ||
+                category.includes(value)
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    }
+);
+
+
+
+function filterDestinations(
+    category,
+    button
+) {
+
+    document
+        .querySelectorAll(".category-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    const cards =
+        document.querySelectorAll(
+            ".destination-card"
+        );
+
+
+    cards.forEach(card => {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+function toggleFavorite(button) {
+
+    button.classList.toggle("active");
+
+
+    if (button.classList.contains("active")) {
+
+        button.innerHTML = "♥";
+
+    } else {
+
+        button.innerHTML = "♡";
+
+    }
+
+}
+
+
+
+function addToTrip(name) {
+
+    alert(
+        name +
+        " has been added to your trip!"
+    );
+
+}
+
+
+
+function exploreDestination(name) {
+
+    alert(
+        "Opening " +
+        name +
+        " destination..."
+    );
+
+}
+
+
+
+function useLocation() {
+
+    alert(
+        "Location-based destination search will be connected here."
+    );
+
+}
+
+</script>
+{% load static %}
+<script src="{% static 'destinations.js' %}" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,801 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | TravelMate</title>
+
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Background Effects -->
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+<div class="bg-grid"></div>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">✈</div>
+
+        <div>
+            <h2>Travel<span>Mate</span></h2>
+            <small>Smart Travel Planner</small>
+        </div>
+    </div>
+
+    <nav class="navigation">
+
+        <a href="/" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{% url 'destinations' %}" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Destinations</span>
+        </a>
+
+        <a href="{% url 'my_trips' %}" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>My Trips</span>
+        </a>
+
+        <a href="{% url 'itinerary' %}" class="nav-item">
+            <span class="nav-icon">☷</span>
+            <span>Itinerary</span>
+        </a>
+
+        <a href="{% url 'favorites' %}" class="nav-item">
+            <span class="nav-icon">♡</span>
+            <span>Favorites</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <span class="nav-icon">₹</span>
+            <span>Expenses</span>
+        </a>
+
+        <a href="{% url 'help_support' %}" class="nav-item">
+            <span class="nav-icon">?</span>
+            <span>Help & Support</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="mini-card">
+            <div class="mini-icon">✦</div>
+            <div>
+                <strong>Travel Pro</strong>
+                <span>Explore more</span>
+            </div>
+        </div>
+
+        <a href="#" class="nav-item settings-link">
+            <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+    <!-- Top Bar -->
+
+    <header class="topbar">
+
+        <div>
+            <p class="eyebrow">YOUR ACCOUNT</p>
+            <h1>My Profile</h1>
+            <p class="top-description">
+                Manage your travel identity, preferences and achievements.
+            </p>
+        </div>
+
+        <div class="top-actions">
+
+            <button class="icon-button" onclick="showToast('No new notifications')">
+                ♢
+                <span class="notification-dot"></span>
+            </button>
+
+            <div class="top-profile">
+                <div class="top-avatar">NR</div>
+
+                <div>
+                    <strong>Nikhil Rathod</strong>
+                    <span>Traveler</span>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PROFILE HERO ================= -->
+
+    <section class="profile-hero">
+
+        <div class="cover-image">
+
+            <div class="cover-pattern"></div>
+
+            <button class="edit-cover" onclick="showToast('Cover photo editor opened')">
+                ✎ Edit Cover
+            </button>
+
+        </div>
+
+
+        <div class="profile-main">
+
+            <div class="avatar-wrapper">
+
+                <div class="profile-avatar">
+                    NR
+                </div>
+
+                <button class="avatar-edit" onclick="showToast('Profile photo editor opened')">
+                    ✎
+                </button>
+
+            </div>
+
+
+            <div class="profile-heading">
+
+                <div class="name-row">
+                    <h2>Nikhil Rathod</h2>
+                    <span class="verified">✓ Verified</span>
+                </div>
+
+                <p>@nikhiltravels</p>
+
+                <div class="location">
+                    <span>⌖</span>
+                    Ahmedabad, India
+                </div>
+
+            </div>
+
+
+            <button class="edit-profile" onclick="openEditProfile()">
+                <span>✎</span>
+                Edit Profile
+            </button>
+
+        </div>
+
+
+        <!-- Profile Stats -->
+
+        <div class="profile-stats">
+
+            <div class="profile-stat">
+                <strong>12</strong>
+                <span>Trips</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="profile-stat">
+                <strong>28</strong>
+                <span>Places</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="profile-stat">
+                <strong>14</strong>
+                <span>Favorites</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="profile-stat">
+                <strong>6</strong>
+                <span>Countries</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTENT GRID ================= -->
+
+    <section class="profile-grid">
+
+
+        <!-- LEFT COLUMN -->
+
+        <div class="left-column">
+
+
+            <!-- About -->
+
+            <div class="panel about-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="section-label">PERSONAL</p>
+                        <h3>About Me</h3>
+                    </div>
+
+                    <button class="small-action" onclick="openEditProfile()">
+                        ✎
+                    </button>
+
+                </div>
+
+                <p class="about-text">
+                    Passionate traveler who loves discovering new destinations,
+                    exploring local places and creating unforgettable journeys.
+                    Always planning the next adventure.
+                </p>
+
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <span class="info-icon">✉</span>
+                        <div>
+                            <small>Email</small>
+                            <strong>nikhil@example.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">☎</span>
+                        <div>
+                            <small>Phone</small>
+                            <strong>+91 XXXXX XXXXX</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">⌖</span>
+                        <div>
+                            <small>Location</small>
+                            <strong>Ahmedabad, Gujarat</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">◷</span>
+                        <div>
+                            <small>Member Since</small>
+                            <strong>January 2026</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Travel Preferences -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="section-label">TRAVEL STYLE</p>
+                        <h3>My Preferences</h3>
+                    </div>
+
+                    <button class="small-action" onclick="showToast('Preferences editor opened')">
+                        ✎
+                    </button>
+
+                </div>
+
+
+                <div class="preference-list">
+
+                    <div class="preference">
+
+                        <div class="preference-icon purple">
+                            🏔️
+                        </div>
+
+                        <div class="preference-info">
+                            <strong>Favorite Travel Style</strong>
+                            <span>Adventure & Exploration</span>
+                        </div>
+
+                        <span class="preference-arrow">›</span>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div class="preference-icon cyan">
+                            🌍
+                        </div>
+
+                        <div class="preference-info">
+                            <strong>Favorite Destination</strong>
+                            <span>Mountains & Beaches</span>
+                        </div>
+
+                        <span class="preference-arrow">›</span>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div class="preference-icon green">
+                            💰
+                        </div>
+
+                        <div class="preference-info">
+                            <strong>Budget Preference</strong>
+                            <span>₹10,000 – ₹40,000 / trip</span>
+                        </div>
+
+                        <span class="preference-arrow">›</span>
+
+                    </div>
+
+
+                    <div class="preference">
+
+                        <div class="preference-icon orange">
+                            📅
+                        </div>
+
+                        <div class="preference-info">
+                            <strong>Preferred Trip Duration</strong>
+                            <span>4 – 7 Days</span>
+                        </div>
+
+                        <span class="preference-arrow">›</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Recent Activity -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="section-label">ACTIVITY</p>
+                        <h3>Recent Activity</h3>
+                    </div>
+
+                    <button class="view-all" onclick="showToast('All activity loaded')">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity">
+
+                        <div class="activity-icon purple-bg">
+                            🧳
+                        </div>
+
+                        <div class="activity-content">
+                            <strong>Created a new trip</strong>
+                            <span>Goa Beach Escape</span>
+                        </div>
+
+                        <time>2h ago</time>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon pink-bg">
+                            ♡
+                        </div>
+
+                        <div class="activity-content">
+                            <strong>Added destination to favorites</strong>
+                            <span>Manali, Himachal Pradesh</span>
+                        </div>
+
+                        <time>Yesterday</time>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon cyan-bg">
+                            📍
+                        </div>
+
+                        <div class="activity-content">
+                            <strong>Explored destination</strong>
+                            <span>Udaipur, Rajasthan</span>
+                        </div>
+
+                        <time>2 days ago</time>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+
+        <div class="right-column">
+
+
+            <!-- Travel Level -->
+
+            <div class="panel level-panel">
+
+                <div class="level-top">
+
+                    <div>
+                        <p class="section-label">TRAVEL LEVEL</p>
+                        <h3>Explorer</h3>
+                    </div>
+
+                    <div class="level-badge">
+                        ✦
+                    </div>
+
+                </div>
+
+
+                <div class="level-progress">
+
+                    <div class="level-info">
+                        <span>1,280 XP</span>
+                        <span>2,000 XP</span>
+                    </div>
+
+                    <div class="xp-bar">
+                        <div class="xp-fill"></div>
+                    </div>
+
+                    <p>720 XP until <strong>Adventurer</strong></p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Achievements -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="section-label">ACHIEVEMENTS</p>
+                        <h3>Travel Badges</h3>
+                    </div>
+
+                    <span class="badge-count">4 / 8</span>
+
+                </div>
+
+
+                <div class="badges">
+
+                    <div class="badge unlocked">
+                        <div class="badge-icon">🌎</div>
+                        <strong>Explorer</strong>
+                        <span>10 places visited</span>
+                    </div>
+
+                    <div class="badge unlocked">
+                        <div class="badge-icon">🏔️</div>
+                        <strong>Mountain Soul</strong>
+                        <span>5 mountain trips</span>
+                    </div>
+
+                    <div class="badge unlocked">
+                        <div class="badge-icon">🏖️</div>
+                        <strong>Beach Lover</strong>
+                        <span>5 beach trips</span>
+                    </div>
+
+                    <div class="badge unlocked">
+                        <div class="badge-icon">📸</div>
+                        <strong>Memory Maker</strong>
+                        <span>25 memories</span>
+                    </div>
+
+                    <div class="badge locked">
+                        <div class="badge-icon">✈️</div>
+                        <strong>Globetrotter</strong>
+                        <span>10 countries</span>
+                    </div>
+
+                    <div class="badge locked">
+                        <div class="badge-icon">🔥</div>
+                        <strong>Adventurer</strong>
+                        <span>20 trips</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Travel Stats -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="section-label">OVERVIEW</p>
+                        <h3>Travel Statistics</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stats-list">
+
+                    <div class="travel-stat">
+
+                        <div class="stat-symbol">🗺️</div>
+
+                        <div class="travel-stat-info">
+                            <strong>28</strong>
+                            <span>Places Explored</span>
+                        </div>
+
+                        <div class="mini-progress">
+                            <div style="width:72%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="travel-stat">
+
+                        <div class="stat-symbol">🧳</div>
+
+                        <div class="travel-stat-info">
+                            <strong>12</strong>
+                            <span>Trips Completed</span>
+                        </div>
+
+                        <div class="mini-progress">
+                            <div style="width:60%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="travel-stat">
+
+                        <div class="stat-symbol">💸</div>
+
+                        <div class="travel-stat-info">
+                            <strong>₹1.84L</strong>
+                            <span>Total Travel Spend</span>
+                        </div>
+
+                        <div class="mini-progress">
+                            <div style="width:48%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="travel-stat">
+
+                        <div class="stat-symbol">📅</div>
+
+                        <div class="travel-stat-info">
+                            <strong>54</strong>
+                            <span>Travel Days</span>
+                        </div>
+
+                        <div class="mini-progress">
+                            <div style="width:67%"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Account Status -->
+
+            <div class="account-card">
+
+                <div class="status-icon">✓</div>
+
+                <div>
+                    <strong>Account is protected</strong>
+                    <p>Your profile security is up to date.</p>
+                </div>
+
+                <span class="secure-dot"></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= EDIT PROFILE MODAL ================= -->
+
+<div class="modal-overlay" id="editModal">
+
+    <div class="edit-modal">
+
+        <button class="close-modal" onclick="closeEditProfile()">×</button>
+
+        <div class="modal-heading">
+            <div class="modal-icon">✎</div>
+
+            <div>
+                <p class="section-label">PROFILE</p>
+                <h2>Edit Profile</h2>
+            </div>
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" value="Nikhil">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" value="Rathod">
+            </div>
+
+            <div class="form-group full">
+                <label>Username</label>
+                <input type="text" value="@nikhiltravels">
+            </div>
+
+            <div class="form-group full">
+                <label>Email</label>
+                <input type="email" value="nikhil@example.com">
+            </div>
+
+            <div class="form-group full">
+                <label>Bio</label>
+                <textarea rows="4">Passionate traveler who loves discovering new destinations and creating unforgettable journeys.</textarea>
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="cancel-btn" onclick="closeEditProfile()">
+                Cancel
+            </button>
+
+            <button class="save-btn" onclick="saveProfile()">
+                Save Changes
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Toast -->
+
+<div class="toast" id="toast">
+
+    <span class="toast-icon">✓</span>
+
+    <div>
+        <strong>Success</strong>
+        <p id="toastMessage">Done</p>
+    </div>
+
+</div>
+
+
+<script>
+
+    const editModal = document.getElementById("editModal");
+    const toast = document.getElementById("toast");
+    const toastMessage = document.getElementById("toastMessage");
+
+    function openEditProfile() {
+        editModal.classList.add("active");
+        document.body.classList.add("modal-open");
+    }
+
+    function closeEditProfile() {
+        editModal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+    }
+
+    function saveProfile() {
+
+        closeEditProfile();
+
+        setTimeout(() => {
+            showToast("Profile updated successfully");
+        }, 250);
+
+    }
+
+    function showToast(message) {
+
+        toastMessage.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2800);
+    }
+
+
+    editModal.addEventListener("click", function(event) {
+
+        if (event.target === editModal) {
+            closeEditProfile();
+        }
+
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+            closeEditProfile();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

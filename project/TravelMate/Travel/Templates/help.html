@@ -1,0 +1,957 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate - Help & Support</title>
+
+    <link rel="stylesheet" href="{% static 'help.css' %}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✈</div>
+
+            <div>
+                <strong>TravelMate</strong>
+                <span>Travel Planner</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="{% url 'destinations' %}" class="nav-item">
+                <span>◉</span>
+                Destinations
+            </a>
+
+            <a href="{% url 'my_trips' %}" class="nav-item">
+                <span>🧳</span>
+                My Trips
+            </a>
+
+            <a href="{% url 'itinerary' %}" class="nav-item">
+                <span>☷</span>
+                Itinerary
+            </a>
+
+            <a href="{% url 'favorites' %}" class="nav-item">
+                <span>♥</span>
+                Favorites
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>💰</span>
+                Expenses
+            </a>
+
+            <a href="#" class="nav-item active">
+                <span>?</span>
+                Help & Support
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="avatar">
+                    N
+                </div>
+
+                <div>
+                    <strong>Nikhil</strong>
+                    <span>Traveler</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <span class="page-label">
+                    SUPPORT CENTER
+                </span>
+
+                <h1>
+                    How can we help?
+                </h1>
+
+                <p>
+                    Find answers, get assistance and make your
+                    TravelMate experience easier.
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span></span>
+                </button>
+
+                <div class="user-avatar">
+                    N
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- SEARCH -->
+        <section class="support-search">
+
+            <div class="search-content">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="helpSearch"
+                    placeholder="Search for help, FAQs, trips, expenses..."
+                    oninput="searchHelp()"
+                >
+
+                <kbd>
+                    /
+                </kbd>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK SUPPORT -->
+        <section class="quick-grid">
+
+            <div class="support-card">
+
+                <div class="support-icon purple">
+                    ❓
+                </div>
+
+                <div>
+                    <h3>FAQs</h3>
+
+                    <p>
+                        Find answers to common questions.
+                    </p>
+
+                    <button onclick="scrollToSection('faq')">
+                        View FAQs →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="support-card">
+
+                <div class="support-icon cyan">
+                    💬
+                </div>
+
+                <div>
+                    <h3>Contact Support</h3>
+
+                    <p>
+                        Need help? Send us a message.
+                    </p>
+
+                    <button onclick="scrollToSection('contact')">
+                        Contact us →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="support-card">
+
+                <div class="support-icon green">
+                    📖
+                </div>
+
+                <div>
+                    <h3>Travel Guide</h3>
+
+                    <p>
+                        Learn how to use TravelMate.
+                    </p>
+
+                    <button onclick="showToast('Travel Guide', 'Travel guide opened.')">
+                        Explore guide →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="support-card">
+
+                <div class="support-icon orange">
+                    🚨
+                </div>
+
+                <div>
+                    <h3>Emergency Info</h3>
+
+                    <p>
+                        Important travel safety information.
+                    </p>
+
+                    <button onclick="showEmergency()">
+                        View information →
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ + SIDE -->
+        <section class="content-grid">
+
+            <!-- FAQ -->
+            <div class="panel" id="faq">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="section-label">
+                            KNOWLEDGE BASE
+                        </span>
+
+                        <h2>
+                            Frequently Asked Questions
+                        </h2>
+                    </div>
+
+                    <span class="faq-count">
+                        6 Articles
+                    </span>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                How do I create a new trip?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Open the Trip Planner, select your
+                            destination, enter your travel dates,
+                            set your budget and save your trip.
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                How can I add expenses?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Open your Expense Tracker and add
+                            the expense amount, category, date
+                            and optional notes.
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                How do I save a destination?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Select a destination and click the
+                            heart icon to add it to your Favorites.
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                Can I edit my itinerary?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Yes. Open your itinerary and modify
+                            activities, locations and schedule
+                            according to your travel plan.
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                Where can I see my trip budget?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Your trip budget and expenses can be
+                            viewed from the Budget and Expense
+                            sections of TravelMate.
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button onclick="toggleFaq(this)">
+                            <span>
+                                How can I change my account settings?
+                            </span>
+
+                            <b>+</b>
+                        </button>
+
+                        <div class="faq-answer">
+                            Open Settings from the navigation menu
+                            to update your profile and preferences.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT PANEL -->
+            <div class="right-column">
+
+
+                <!-- CONTACT -->
+                <div class="panel contact-panel" id="contact">
+
+                    <span class="section-label">
+                        SUPPORT
+                    </span>
+
+                    <h2>
+                        Still need help?
+                    </h2>
+
+                    <p>
+                        Our support team is here to help you
+                        with TravelMate.
+                    </p>
+
+
+                    <div class="contact-option">
+
+                        <div class="contact-icon">
+                            ✉
+                        </div>
+
+                        <div>
+                            <strong>Email Support</strong>
+                            <span>
+                                support@travelmate.com
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-option">
+
+                        <div class="contact-icon">
+                            💬
+                        </div>
+
+                        <div>
+                            <strong>Live Chat</strong>
+                            <span>
+                                Available 24/7
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="contact-btn"
+                        onclick="openSupportForm()">
+
+                        Contact Support →
+
+                    </button>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="status-card">
+
+                    <div class="status-top">
+
+                        <span class="status-dot"></span>
+
+                        <strong>
+                            All systems operational
+                        </strong>
+
+                    </div>
+
+                    <p>
+                        TravelMate services are currently
+                        running normally.
+                    </p>
+
+                    <span class="updated">
+                        Updated just now
+                    </span>
+
+                </div>
+
+
+                <!-- FEEDBACK -->
+                <div class="feedback-card">
+
+                    <div class="feedback-icon">
+                        💡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Have feedback?
+                        </strong>
+
+                        <p>
+                            Help us improve TravelMate.
+                        </p>
+
+                        <button
+                            onclick="showToast('Thank you!', 'Your feedback matters to us.')">
+
+                            Send feedback →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT FORM -->
+        <section
+            class="contact-form-panel"
+            id="supportForm">
+
+            <div class="form-header">
+
+                <div>
+                    <span class="section-label">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>
+                        Send us a message
+                    </h2>
+
+                    <p>
+                        Describe your issue and our support team
+                        will help you.
+                    </p>
+                </div>
+
+                <button
+                    class="close-btn"
+                    onclick="closeSupportForm()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form onsubmit="submitSupport(event)">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Subject
+                    </label>
+
+                    <select required>
+
+                        <option value="">
+                            Select a topic
+                        </option>
+
+                        <option>
+                            Account & Login
+                        </option>
+
+                        <option>
+                            Trips & Itinerary
+                        </option>
+
+                        <option>
+                            Expenses & Budget
+                        </option>
+
+                        <option>
+                            Destinations
+                        </option>
+
+                        <option>
+                            Technical Issue
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Message
+                    </label>
+
+                    <textarea
+                        rows="5"
+                        placeholder="Describe your issue..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Send Message →
+
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+
+    <div class="toast-icon">
+        ✓
+    </div>
+
+    <div>
+
+        <strong id="toastTitle">
+            Success
+        </strong>
+
+        <span id="toastText">
+            Done successfully.
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- EMERGENCY MODAL -->
+<div class="modal" id="emergencyModal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeEmergency()">
+            ×
+        </button>
+
+        <div class="modal-icon">
+            🚨
+        </div>
+
+        <h2>
+            Travel Emergency Information
+        </h2>
+
+        <p>
+            For immediate danger or a medical emergency,
+            contact the appropriate local emergency service
+            in your current location.
+        </p>
+
+        <div class="emergency-note">
+
+            <strong>
+                Important
+            </strong>
+
+            <span>
+                TravelMate is a travel-planning application
+                and does not replace professional emergency,
+                medical or security services.
+            </span>
+
+        </div>
+
+        <button
+            class="modal-btn"
+            onclick="closeEmergency()">
+
+            Got it
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================================
+   FAQ
+================================ */
+
+function toggleFaq(button) {
+
+    const item =
+        button.parentElement;
+
+    const answer =
+        item.querySelector(".faq-answer");
+
+    const icon =
+        button.querySelector("b");
+
+
+    document
+        .querySelectorAll(".faq-item")
+        .forEach(faq => {
+
+            if (faq !== item) {
+
+                faq.classList.remove("open");
+
+                faq.querySelector(".faq-answer")
+                    .style.maxHeight = null;
+
+                faq.querySelector("b")
+                    .textContent = "+";
+
+            }
+
+        });
+
+
+    item.classList.toggle("open");
+
+
+    if (item.classList.contains("open")) {
+
+        answer.style.maxHeight =
+            answer.scrollHeight + "px";
+
+        icon.textContent = "−";
+
+    } else {
+
+        answer.style.maxHeight = null;
+
+        icon.textContent = "+";
+
+    }
+
+}
+
+
+/* ================================
+   SEARCH FAQ
+================================ */
+
+function searchHelp() {
+
+    const query =
+        document
+            .getElementById("helpSearch")
+            .value
+            .toLowerCase();
+
+
+    const items =
+        document.querySelectorAll(".faq-item");
+
+
+    items.forEach(item => {
+
+        const text =
+            item.innerText.toLowerCase();
+
+        item.style.display =
+            text.includes(query)
+                ? "block"
+                : "none";
+
+    });
+
+}
+
+
+/* ================================
+   SCROLL
+================================ */
+
+function scrollToSection(id) {
+
+    document
+        .getElementById(id)
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ================================
+   SUPPORT FORM
+================================ */
+
+function openSupportForm() {
+
+    const form =
+        document.getElementById("supportForm");
+
+    form.classList.add("show");
+
+    setTimeout(() => {
+
+        form.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 100);
+
+}
+
+
+function closeSupportForm() {
+
+    document
+        .getElementById("supportForm")
+        .classList.remove("show");
+
+}
+
+
+function submitSupport(event) {
+
+    event.preventDefault();
+
+    showToast(
+        "Message Sent",
+        "Our support team will review your request."
+    );
+
+    event.target.reset();
+
+}
+
+
+/* ================================
+   EMERGENCY
+================================ */
+
+function showEmergency() {
+
+    document
+        .getElementById("emergencyModal")
+        .classList.add("show");
+
+}
+
+
+function closeEmergency() {
+
+    document
+        .getElementById("emergencyModal")
+        .classList.remove("show");
+
+}
+
+
+/* ================================
+   TOAST
+================================ */
+
+function showToast(title, text) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    document
+        .getElementById("toastTitle")
+        .textContent = title;
+
+
+    document
+        .getElementById("toastText")
+        .textContent = text;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+/* ================================
+   KEYBOARD SEARCH
+================================ */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "/" &&
+            document.activeElement.tagName !== "INPUT"
+        ) {
+
+            event.preventDefault();
+
+            document
+                .getElementById("helpSearch")
+                .focus();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
